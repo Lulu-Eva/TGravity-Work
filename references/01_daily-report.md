@@ -78,11 +78,7 @@ GMV
 
 用户明确说“保存”“保存今天日报”“写入 tgravity-work-data”时，才保存日报。
 
-保存前确认目录：
-
-```text
-我会保存到当前项目的 `tgravity-work-data/daily/`。如果要换目录，请告诉我；如果确认，请回复“确认保存”。
-```
+保存前按 `references/shared/save-boundaries.md` 执行两步确认。
 
 保存路径：
 
