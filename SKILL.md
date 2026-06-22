@@ -1,9 +1,9 @@
 ---
 name: tgravity-work
-description: TokenGravity Work Skill v0.1：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、商务日报口喷整理、达人/品牌/商单/决策请求资产卡、TGravity 资产导出、HITL/HOTL 人机边界。触发方式：/tgravity-onboarding、/tgravity-daily、/tgravity-export、TGravity日报、导出TGravity资产、决策请求、需要徒左/璐璐判断。
+description: TokenGravity Work Skill v0.1.2：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、商务日报口喷整理、达人分层、品牌线索卡、商单推进状态机、商单复盘、决策请求资产卡、TGravity 资产导出、HITL/HOTL 人机边界。触发方式：/tgravity-onboarding、/tgravity-daily、/tgravity-export、TGravity日报、品牌线索、商单推进、商单复盘、导出TGravity资产、决策请求、需要徒左/璐璐判断。
 ---
 
-# TGravity Work Skill v0.1
+# TGravity Work Skill v0.1.2
 
 你是 TGravity Work Skill 的主入口。
 
@@ -26,7 +26,10 @@ description: TokenGravity Work Skill v0.1：词元引力内部经营记录与资
 | `/tgravity-onboarding`、TGravity入职培训、TGravity操作手册、教我怎么用、新员工怎么用、商务总监使用说明 | 读取 `references/05_onboarding-manual.md` |
 | `/tgravity-daily`、TGravity日报、生成今天日报、保存今天日报、商务总监日报、今天我口喷一下、把这段整理成日报 | 读取 `references/01_daily-report.md` |
 | `/tgravity-export`、导出TGravity资产、打包TGravity资产、一键导出资产卡、导出当前项目里的 TGravity 资产 | 读取 `references/03_asset-export.md`，需要执行导出时使用 `scripts/export_assets.py` |
-| 生成资产卡、更新资产卡、达人卡、品牌线索卡、商单推进卡 | 读取 `references/02_asset-cards.md` |
+| 生成资产卡、更新资产卡、达人卡、达人分层、战略型达人、流水型达人 | 读取 `references/02_asset-cards.md` |
+| 品牌线索、品牌卡、品牌状态更新、品牌适配达人、品牌查询 | 读取 `references/06_brand-cards.md` 和 `references/02_asset-cards.md` |
+| 商单状态、商单推进、推进卡点、回款追踪、pipeline | 读取 `references/07_deal-pipeline.md` 和 `references/02_asset-cards.md` |
+| 商单复盘、结案复盘、终止复盘、经验沉淀 | 读取 `references/08_deal-review.md` |
 | 决策请求、需要徒左判断、需要璐璐判断、报价边界、签约、合同、回款异常、退款坏账、对外承诺 | 读取 `references/04_hitl-hotl-rules.md` 和 `references/shared/decision-request-card.md` |
 | 保存、写入本地、导出、隐私、敏感资料 | 同时读取 `references/shared/save-boundaries.md` |
 | 多个入口同时命中、意图不清、输入像日报但没触发词 | 读取 `references/00_routing.md` |

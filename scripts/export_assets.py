@@ -23,6 +23,7 @@ ASSET_DIRS = {
     "creator_card": "creators",
     "brand_lead": "brands",
     "deal_progress": "deals",
+    "deal_review": "reviews",
     "decision_request": "decisions",
     "escalation": "escalations",
 }
@@ -32,6 +33,7 @@ REQUIRED_FIELDS = {
     "creator_card": ["asset_id", "asset_type", "title", "owner", "status"],
     "brand_lead": ["asset_id", "asset_type", "title", "owner", "status"],
     "deal_progress": ["asset_id", "asset_type", "title", "owner", "status"],
+    "deal_review": ["asset_id", "asset_type", "title", "owner", "status"],
     "decision_request": ["asset_id", "asset_type", "title", "owner", "status"],
     "escalation": ["asset_id", "asset_type", "title", "owner", "status", "risk_level"],
 }

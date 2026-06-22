@@ -37,6 +37,7 @@ daily_report
 creator_card
 brand_lead
 deal_progress
+deal_review
 decision_request
 escalation
 ```
@@ -75,6 +76,7 @@ tgravity-work-data/
 ├── creators/
 ├── brands/
 ├── deals/
+├── reviews/
 ├── decisions/
 ├── escalations/
 └── exports/
@@ -123,11 +125,42 @@ tgravity-work-data/
 下一步动作：
 ```
 
+分层字段：
+
+```text
+达人类型：战略型 / 流水型
+管理强度：深度孵化 / 轻量维护
+是否接入 Eva-Skill：是 / 否
+创始人介入级别：高 / 中 / 低
+```
+
+战略型达人额外记录：
+
+```text
+孵化目标：
+商业化方向：
+内容定位：
+当前阶段：观察期 / 签约期 / 孵化期 / 商业化期
+最近一次创始人判断时间：
+最近一次创始人判断结论：
+```
+
+流水型达人额外记录：
+
+```text
+当前合作状态：活跃 / 暂停 / 结束
+近三个月商单数量：
+近三个月到账金额：
+维护成本评估：低 / 中 / 高
+```
+
 HITL 触发：
 
 - 要签约。
 - 要改变分成规则。
 - 要投入创始人深度孵化时间。
+- 要把流水型达人升级为战略型达人。
+- 要接入 Eva-Skill 做深度内容孵化。
 
 ## 品牌线索卡
 
