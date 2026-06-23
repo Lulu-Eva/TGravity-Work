@@ -1,13 +1,14 @@
 # TGravity Work Skill
 
-TokenGravity Work Skill 是词元引力内部经营记录与资产交接 Skill。它面向商务总监和新员工，帮助把日常口喷、品牌线索、达人信息、商单推进、复盘记录整理成可保存、可导出、可交接的 Markdown 资产。
+TokenGravity Work Skill 是词元引力内部经营记录与资产交接 Skill。它面向词元引力员工，帮助把日常口喷、品牌线索、达人信息、商单推进、复盘记录整理成可保存、可导出、可交接的 Markdown 资产。
 
-当前版本：`v0.1.2`
+当前版本：`v0.1.3`
 
 ## 能做什么
 
 - 新员工分步上手：用 `/tgravity-onboarding` 带着员工一步一步学会使用。
-- 商务日报整理：把自然口喷整理成结构化日报。
+- 使用者信息卡：第一次使用先确认“我该怎么称呼你”，后续日报自动带入提交人。
+- 工作日报整理：把自然口喷整理成结构化日报。
 - 达人资产卡：区分战略型达人和流水型达人，记录管理强度和是否接入 Eva-Skill。
 - 品牌线索卡：记录品牌画像、对接状态、适配达人和历史合作。
 - 商单推进：用状态机追踪从线索到回款的完整过程。
@@ -115,6 +116,7 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 
 ```text
 /tgravity-onboarding
+/tgravity-profile
 /tgravity-daily
 /tgravity-export
 TGravity日报
@@ -123,7 +125,6 @@ TGravity日报
 商单复盘
 导出TGravity资产
 决策请求
-需要徒左判断
 需要璐璐判断
 ```
 
@@ -135,16 +136,16 @@ TGravity日报
 /tgravity-onboarding
 ```
 
-然后按 Skill 的提示回复“开始”。不要一开始就让员工理解 Agent、Skill、Markdown、资产卡、HITL 这些概念。先让员工跑通一条训练日报。
+首次使用时，Skill 会先问“我该怎么称呼你？”。员工回答称呼后，再按 Skill 的提示回复“开始”。不要一开始就让员工理解 Agent、Skill、Markdown、资产卡、HITL 这些概念。先让员工跑通一条训练日报。
 
 ## 真实日报示例
 
 ```text
 /tgravity-daily
-今天跟 A 达人聊了合作，她愿意试运行。B 品牌有一单预算 5000 到 8000 的测评，还没给 Brief。今天没有回款。需要徒左判断 A 达人抽成比例。明天催 B 品牌 Brief。
+今天跟 A 达人聊了合作，她愿意试运行。B 品牌有一单预算 5000 到 8000 的测评，还没给 Brief。今天没有回款。需要璐璐判断 A 达人抽成比例。明天催 B 品牌 Brief。
 ```
 
-Skill 会整理日报，并提示建议生成或更新哪些资产卡。
+Skill 会先确认提交人称呼，再整理日报，并提示建议生成或更新哪些资产卡。
 
 ## 资产卡规则
 

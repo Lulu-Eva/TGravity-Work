@@ -2,16 +2,34 @@
 
 ## 目标
 
-把商务总监的自然口喷、聊天记录或零散 bullet 整理成日报 Markdown，并列出应生成或更新的资产卡。
+把员工的自然口喷、聊天记录或零散 bullet 整理成工作日报 Markdown，并列出应生成或更新的资产卡。
 
 ## 触发
 
-`/tgravity-daily`、TGravity日报、生成今天日报、保存今天日报、商务总监日报、今天我口喷一下、把这段整理成日报。
+`/tgravity-daily`、TGravity日报、生成今天日报、保存今天日报、工作日报、今天我口喷一下、把这段整理成日报。
+
+## 使用者称呼
+
+生成日报前必须先取得提交人：
+
+1. 当前对话刚确认的称呼。
+2. `tgravity-work-data/profile/current-user.md` 的 `display_name`。
+3. 用户输入中明确出现的“我是张三 / 我叫张三”。
+4. 都没有时，先读取 `09_user-profile.md`，只问“我该怎么称呼你？”。
+
+日报标题使用：
+
+```text
+# {{display_name}}的工作日报
+```
+
+提交人字段使用同一个 `display_name`。
 
 ## 流程
 
 ```text
 用户输入
+-> 取得使用者称呼
 -> 抽取事实
 -> 归类：达人 / 品牌 / 商单 / 金额 / 风险 / 决策 / 明日动作
 -> 生成日报
@@ -83,7 +101,7 @@ GMV
 保存路径：
 
 ```text
-tgravity-work-data/daily/YYYY/YYYY-MM/YYYY-MM-DD_商务总监日报.md
+tgravity-work-data/daily/YYYY/YYYY-MM/YYYY-MM-DD_{{display_name}}_工作日报.md
 ```
 
 如需要保存，必须遵守 `references/shared/save-boundaries.md`。

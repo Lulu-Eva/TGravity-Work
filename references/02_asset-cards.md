@@ -72,6 +72,7 @@ human_only
 
 ```text
 tgravity-work-data/
+├── profile/
 ├── daily/
 ├── creators/
 ├── brands/
@@ -95,7 +96,7 @@ tgravity-work-data/
 ## 文件命名
 
 ```text
-日报：YYYY-MM-DD_商务总监日报.md
+日报：YYYY-MM-DD_提交人_工作日报.md
 达人：creator_达人昵称_asset-id.md
 品牌：brand_品牌名_asset-id.md
 商单：deal_品牌_达人_asset-id.md
