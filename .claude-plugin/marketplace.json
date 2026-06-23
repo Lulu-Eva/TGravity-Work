@@ -4,21 +4,24 @@
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skill v0.1.3：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、使用者信息卡初始化、员工工作日报口喷整理、品牌线索、达人分层、商单推进、商单复盘、决策请求和 TGravity 资产导出。",
-    "version": "0.1.3"
+    "description": "TGravity Work Skill v0.1.4：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、使用者信息卡初始化、开工前工作审查与任务拆解、员工工作日报口喷整理、品牌线索、达人分层、商单推进、商单复盘、决策请求和 TGravity 资产导出。",
+    "version": "0.1.4"
   },
   "plugins": [
     {
       "name": "tgravity-work",
-      "description": "TGravity Work Skill v0.1.3：词元引力内部经营记录与资产交接工具包。支持 /tgravity-onboarding、/tgravity-profile、/tgravity-daily、/tgravity-export、品牌线索、商单推进、商单复盘、决策请求和 HITL/HOTL 人机边界。",
+      "description": "TGravity Work Skill v0.1.4：词元引力内部经营记录与资产交接工具包。支持 /tgravity-onboarding、/tgravity-profile、/tgravity-workcheck、/tgravity-task、/tgravity-daily、/tgravity-export、品牌线索、商单推进、商单复盘、决策请求和 HITL/HOTL 人机边界。",
       "source": "./",
       "strict": false,
-      "version": "0.1.3",
+      "version": "0.1.4",
       "category": "business-operations",
       "keywords": [
         "tokengravity",
         "tgravity",
         "daily-report",
+        "workcheck",
+        "task-split",
+        "ai-native",
         "onboarding",
         "brand-lead",
         "creator-card",

@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work"
-  short_description: "词元引力日报、品牌商单资产、导出与新员工带练工具"
-  default_prompt: "Use $tgravity-work to guide a TokenGravity employee through onboarding, daily report capture, brand/deal tracking, and asset export."
+  short_description: "词元引力开工审查、日报、资产与新员工带练工具"
+  default_prompt: "Use $tgravity-work to guide a TokenGravity employee through workcheck, onboarding, daily report capture, brand/deal tracking, and asset export."

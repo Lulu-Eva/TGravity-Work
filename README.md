@@ -1,13 +1,14 @@
 # TGravity Work Skill
 
-TokenGravity Work Skill 是词元引力内部经营记录与资产交接 Skill。它面向词元引力员工，帮助把日常口喷、品牌线索、达人信息、商单推进、复盘记录整理成可保存、可导出、可交接的 Markdown 资产。
+TokenGravity Work Skill 是词元引力内部经营记录与资产交接 Skill。它面向词元引力员工，帮助员工先判断一项工作的人机分工，再把日常口喷、品牌线索、达人信息、商单推进、复盘记录整理成可保存、可导出、可交接的 Markdown 资产。
 
-当前版本：`v0.1.3`
+当前版本：`v0.1.4`
 
 ## 能做什么
 
 - 新员工分步上手：用 `/tgravity-onboarding` 带着员工一步一步学会使用。
 - 使用者信息卡：第一次使用先确认“我该怎么称呼你”，后续日报自动带入提交人。
+- 开工前工作审查：用 `/tgravity-workcheck` 判断一件工作 AI 能不能做、该怎么配合、应该用 Codex / WorkBuddy / Manus 哪个工具。
 - 工作日报整理：把自然口喷整理成结构化日报。
 - 达人资产卡：区分战略型达人和流水型达人，记录管理强度和是否接入 Eva-Skill。
 - 品牌线索卡：记录品牌画像、对接状态、适配达人和历史合作。
@@ -53,8 +54,16 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 ```text
 /tgravity-onboarding
 /tgravity-profile
+/tgravity-workcheck
+/tgravity-task
 /tgravity-daily
 /tgravity-export
+开工前检查
+工作审查
+工作任务拆解
+这件工作你能做吗
+这件工作AI能做吗
+帮我拆工作
 TGravity日报
 品牌线索
 商单推进
@@ -72,7 +81,15 @@ TGravity日报
 /tgravity-onboarding
 ```
 
-首次使用时，Skill 会先问“我该怎么称呼你？”。员工回答称呼后，再按 Skill 的提示回复“开始”。不要一开始就让员工理解 Agent、Skill、Markdown、资产卡、HITL 这些概念。先让员工跑通一条训练日报。
+首次使用时，Skill 会先问“我该怎么称呼你？”。员工回答称呼后，再按 Skill 的提示回复“开始”。不要一开始就让员工理解 Agent、Skill、Markdown、资产卡、HITL 这些概念。先让员工跑通一次开工审查和一条训练日报。
+
+员工准备做任何新工作时，先输入：
+
+```text
+/tgravity-workcheck 我想做【这件工作】，请先判断 AI 能不能做，并拆分我和 AI 各自该做什么。
+```
+
+Skill 会先把工作定义清楚，再给出人类、Codex、WorkBuddy、Manus 的分工建议。
 
 ## 真实日报示例
 
