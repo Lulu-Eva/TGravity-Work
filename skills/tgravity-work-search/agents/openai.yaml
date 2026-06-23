@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work Search"
+  short_description: "词元引力 Perplexity 搜索与资料核验工具"
+  default_prompt: "Use $tgravity-work-search to configure Perplexity search and run a sourced TokenGravity work search."

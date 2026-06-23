@@ -1,9 +1,9 @@
 ---
 name: tgravity-work
-description: TokenGravity Work Skill v0.1.4：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、使用者信息卡初始化、开工前工作审查与任务拆解、AI/人类/Codex/WorkBuddy/Manus 分工判断、员工工作日报口喷整理、达人分层、品牌线索卡、商单推进状态机、商单复盘、决策请求资产卡、TGravity 资产导出、HITL/HOTL 人机边界。触发方式：/tgravity-onboarding、/tgravity-profile、/tgravity-workcheck、/tgravity-task、/tgravity-daily、/tgravity-export、开工前检查、工作审查、工作任务拆解、这件工作你能做吗、这件工作AI能做吗、先问AI、帮我拆工作、TGravity日报、品牌线索、商单推进、商单复盘、导出TGravity资产、决策请求、需要璐璐判断。
+description: TokenGravity Work Skill v0.1.5：词元引力内部经营记录与资产交接工具包。用于新员工小白带练、使用者信息卡初始化、开工前工作审查与任务拆解、AI/人类/Codex/WorkBuddy/Manus/TGravity-Work-Search 分工判断、员工工作日报口喷整理、达人分层、品牌线索卡、商单推进状态机、商单复盘、决策请求资产卡、TGravity 资产导出、HITL/HOTL 人机边界。触发方式：/tgravity-onboarding、/tgravity-profile、/tgravity-workcheck、/tgravity-task、/tgravity-daily、/tgravity-export、开工前检查、工作审查、工作任务拆解、这件工作你能做吗、这件工作AI能做吗、先问AI、帮我拆工作、TGravity日报、品牌线索、商单推进、商单复盘、导出TGravity资产、决策请求、需要璐璐判断。
 ---
 
-# TGravity Work Skill v0.1.4
+# TGravity Work Skill v0.1.5
 
 你是 TGravity Work Skill 的主入口。
 

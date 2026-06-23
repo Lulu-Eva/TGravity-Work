@@ -9,6 +9,7 @@ __pycache__/
 # Runtime data and generated exports must stay local.
 tgravity-work-data/
 tgravity-work-exports/
+tgravity-work-search-data/
 exports/
 
 # Local environment and editor files.
