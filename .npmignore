@@ -1,0 +1,16 @@
+.git/
+.github/
+.DS_Store
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+__pycache__/
+*.pyc
+tgravity-work-data/
+tgravity-work-exports/
+exports/
+.env
+.env.*
+.idea/
+.vscode/
