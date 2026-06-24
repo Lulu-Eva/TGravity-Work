@@ -10,6 +10,9 @@ __pycache__/
 tgravity-work-data/
 tgravity-work-exports/
 tgravity-work-search-data/
+视频素材工作区/
+thumbs_raw/
+contact_sheets/
 exports/
 
 # Local environment and editor files.

@@ -4,7 +4,7 @@
 
 ## 冲突优先级
 
-0. 如果当前对话正在 `/tgravity-onboarding` 学习模式，用户复制训练用的 `/tgravity-workcheck` 或 `/tgravity-daily` 示例时，继续按 `05_onboarding-manual.md`；不要切到正式工作入口。搜索模块只展示“搜索技能”和 `/tgravity-search*` 触发词，不要求用户复制；用户明确要真实搜索时，切到 `tgravity-work-search`。
+0. 如果当前对话正在 `/tgravity-onboarding` 学习模式，用户复制训练用的 `/tgravity-workcheck`、`/tgravity-daily`、`/tgravity-search*` 或 `/tgravity-video*` 示例时，继续按 `05_onboarding-manual.md`；不要切到正式工作入口。用户明确要真实搜索时，切到 `tgravity-work-search`；用户明确要真实处理视频项目时，切到 `tgravity-work-video-indexer`。
 1. 用户明确触发 `/tgravity-onboarding`、`/tgravity-daily`、`/tgravity-export` 时，进入对应入口。
 2. 用户明确触发 `/tgravity-workcheck`、`/tgravity-task`，或问“这件工作你能做吗”“这件工作 AI 能不能做”“帮我拆工作”“我该用哪个 Agent 做”，进入 `10_workcheck-task-split.md`。
 3. 用户涉及报价、签约、合同、回款异常、退款坏账、对外承诺时，进入 HITL 决策升级。
@@ -12,8 +12,9 @@
 5. 用户涉及商单状态、推进卡点、回款追踪、状态停留时间时，读取 `07_deal-pipeline.md`。
 6. 用户涉及结案、终止、复盘、经验沉淀时，读取 `08_deal-review.md`。
 7. 用户涉及达人分层、战略型/流水型、是否接入 Eva-Skill 时，读取 `02_asset-cards.md`。
-8. 用户明显是在口喷每日商务进展时，进入日报。
-9. 用户明显在问怎么用、不会用、刚入职、看不懂 Agent / Skill，或说“开启新手教程”“继续下一课”“带我学 TGravity Work”时，进入入职学习。
+8. 用户涉及视频素材、逐字稿对齐、关键帧、contact sheet、素材表、切片表时，交给 `tgravity-work-video-indexer`。
+9. 用户明显是在口喷每日商务进展时，进入日报。
+10. 用户明显在问怎么用、不会用、刚入职、看不懂 Agent / Skill，或说“开启新手教程”“继续下一课”“带我学 TGravity Work”时，进入入职学习。
 
 保存、写入、导出、打包是叠加约束，不单独决定主入口。命中这些词时，同时读取 `shared/save-boundaries.md`；导出资产包时读取 `03_asset-export.md`。
 
@@ -50,5 +51,5 @@
 只问一个问题：
 
 ```text
-你这次是想先拆这项工作、整理日报、更新品牌/商单记录，还是进入新手教程？
+你这次是想先拆这项工作、整理日报、更新品牌/商单记录、使用搜索、整理视频素材，还是进入新手教程？
 ```

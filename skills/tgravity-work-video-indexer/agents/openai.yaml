@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work Video Indexer"
+  short_description: "视频素材索引、逐字稿对齐与切片表生成"
+  default_prompt: "Use $tgravity-work-video-indexer when the user says 视频分析技能, /tgravity-video, /tgravity-video-init, /tgravity-video-check, /tgravity-video-run, /tgravity-video-validate, 帮我分析视频素材, 帮我做素材表, 帮我整理切片表, or asks for transcript alignment, contact sheets, low-confidence ASR, or editing slice tables."

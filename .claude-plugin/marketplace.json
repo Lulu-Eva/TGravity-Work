@@ -4,13 +4,13 @@
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录、资产交接、开工审查、通用新手学习和 Perplexity + Tavily 双引擎公开网页搜索工具包。包含 tgravity-work 与 tgravity-work-search 两个 Skill。",
+    "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录、资产交接、开工审查、通用新手学习、双引擎搜索和视频素材索引工具包。包含 tgravity-work、tgravity-work-search 与 tgravity-work-video-indexer。",
     "version": "0.1.0"
   },
   "plugins": [
     {
-      "name": "tgravity-work",
-      "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录与资产交接工具包，另含 TGravity-Work-Search 双引擎搜索 Skill。支持 /tgravity-onboarding、开启新手教程、/tgravity-workcheck、/tgravity-daily、/tgravity-export、搜索技能、/tgravity-search。",
+      "name": "TGravity Work Skills",
+      "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录与资产交接工具包，另含双引擎搜索和视频素材索引 Skill。支持 /tgravity-onboarding、/tgravity-workcheck、/tgravity-daily、/tgravity-export、搜索技能、/tgravity-search、视频分析技能、/tgravity-video。",
       "source": "./",
       "strict": false,
       "version": "0.1.0",
@@ -28,6 +28,11 @@
         "deal-pipeline",
         "asset-export",
         "search",
+        "video-indexer",
+        "video-analysis",
+        "contact-sheet",
+        "transcript-alignment",
+        "editing-table",
         "perplexity",
         "tavily",
         "research",
@@ -38,7 +43,8 @@
       ],
       "skills": [
         "./skills/tgravity-work",
-        "./skills/tgravity-work-search"
+        "./skills/tgravity-work-search",
+        "./skills/tgravity-work-video-indexer"
       ]
     }
   ]
