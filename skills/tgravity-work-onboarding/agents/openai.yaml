@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work Onboarding"
+  short_description: "新员工小白入门、动态教学和操作带练"
+  default_prompt: "Use $tgravity-work-onboarding when the user asks to 开启新手教程, 带我学 TGravity Work, TGravity 入职培训, 操作手册, 继续下一课, or 新员工怎么用."

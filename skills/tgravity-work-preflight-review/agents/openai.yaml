@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work Preflight Review"
+  short_description: "大项目行动前审视、交付级别和 11 问闸门"
+  default_prompt: "Use $tgravity-work-preflight-review when the user asks 大项目行动前审视, 行动前审视, 大项目审视, 拿不准要不要做, 重大投入, 方向调整, 业务转型, or 做了一半感觉跑偏."

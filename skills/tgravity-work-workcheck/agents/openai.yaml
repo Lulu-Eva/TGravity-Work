@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work Workcheck"
+  short_description: "开工前工作审查、任务定义和人机分工"
+  default_prompt: "Use $tgravity-work-workcheck when the user asks 开工前检查, 工作审查, 工作任务拆解, 这件工作 AI 能不能做, 先问 AI, or 帮我拆工作."

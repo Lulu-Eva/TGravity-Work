@@ -13,6 +13,9 @@ tgravity-work-search-data/
 视频素材工作区/
 thumbs_raw/
 contact_sheets/
+发票下载/
+发票填写*.xlsx
+发票填写*_复查报告.md
 exports/
 
 # Local environment and editor files.

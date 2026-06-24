@@ -4,13 +4,13 @@
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录、资产交接、开工审查、通用新手学习、双引擎搜索和视频素材索引工具包。包含 tgravity-work、tgravity-work-search 与 tgravity-work-video-indexer。",
+    "description": "TGravity Work Skills 0.1 beta：词元引力内部工作协作工具包。主入口只做路由，能力拆分为新手教程、称呼配置、开工审查、日报、资产卡、资产导出、大项目审视、搜索、视频、发票整理和项目文件夹整理等独立 Skill。",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "TGravity Work Skills",
-      "description": "TGravity Work Skills 0.1 beta：词元引力内部经营记录与资产交接工具包，另含双引擎搜索和视频素材索引 Skill。支持 /tgravity-onboarding、/tgravity-workcheck、/tgravity-daily、/tgravity-export、搜索技能、/tgravity-search、视频分析技能、/tgravity-video。",
+      "description": "TGravity Work Skills 0.1 beta：主入口只路由，子 Skill 独立处理新手教程、开工审查、日报、资产卡、导出、大项目行动前审视、搜索、视频素材索引、发票报销整理和项目文件夹整理。",
       "source": "./",
       "strict": false,
       "version": "0.1.0",
@@ -18,14 +18,19 @@
       "keywords": [
         "tokengravity",
         "tgravity",
+        "router",
+        "onboarding",
+        "profile",
         "daily-report",
         "workcheck",
         "task-split",
+        "preflight-review",
+        "decision-gate",
         "ai-native",
-        "onboarding",
         "brand-lead",
         "creator-card",
         "deal-pipeline",
+        "asset-card",
         "asset-export",
         "search",
         "video-indexer",
@@ -33,6 +38,16 @@
         "contact-sheet",
         "transcript-alignment",
         "editing-table",
+        "invoice",
+        "reimbursement",
+        "receipt",
+        "railway-ticket",
+        "expense-report",
+        "folder-organizer",
+        "project-folder",
+        "agents-md",
+        "claude-md",
+        "source-of-truth",
         "perplexity",
         "tavily",
         "research",
@@ -43,8 +58,17 @@
       ],
       "skills": [
         "./skills/tgravity-work",
+        "./skills/tgravity-work-onboarding",
+        "./skills/tgravity-work-profile",
+        "./skills/tgravity-work-workcheck",
+        "./skills/tgravity-work-daily-report",
+        "./skills/tgravity-work-asset-cards",
+        "./skills/tgravity-work-asset-export",
+        "./skills/tgravity-work-preflight-review",
         "./skills/tgravity-work-search",
-        "./skills/tgravity-work-video-indexer"
+        "./skills/tgravity-work-video-indexer",
+        "./skills/tgravity-work-invoice-reimbursement",
+        "./skills/tgravity-work-project-folder-organizer"
       ]
     }
   ]

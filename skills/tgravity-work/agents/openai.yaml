@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work"
-  short_description: "词元引力学习、开工审查、日报、资产工具"
-  default_prompt: "Use $tgravity-work to guide a TokenGravity employee through learning mode, workcheck, daily report capture, brand/deal tracking, and asset export. In a TGravity Work flow, hand off search to $tgravity-work-search and video material indexing to $tgravity-work-video-indexer."
+  short_description: "TGravity Work 主入口路由分发器"
+  default_prompt: "Use $tgravity-work only to route the user to the right TGravity child skill: onboarding, profile, workcheck, daily report, asset cards, asset export, preflight review, search, video indexer, invoice reimbursement, or project folder organizer."
