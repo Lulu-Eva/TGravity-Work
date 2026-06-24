@@ -138,7 +138,7 @@ def call_search(args: argparse.Namespace) -> dict:
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
-            "User-Agent": "tgravity-work-search/0.1.5",
+            "User-Agent": "tgravity-work-search/0.1.6",
         },
         method="POST",
     )

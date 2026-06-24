@@ -4,16 +4,16 @@
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skills v0.1.5：词元引力内部经营记录、资产交接、开工审查和 Perplexity 公开网页搜索工具包。包含 tgravity-work 与 tgravity-work-search 两个 Skill。",
-    "version": "0.1.5"
+    "description": "TGravity Work Skills v0.1.6：词元引力内部经营记录、资产交接、开工审查、通用新手学习和 Perplexity 公开网页搜索工具包。包含 tgravity-work 与 tgravity-work-search 两个 Skill。",
+    "version": "0.1.6"
   },
   "plugins": [
     {
       "name": "tgravity-work",
-      "description": "TGravity Work Skills v0.1.5：词元引力内部经营记录与资产交接工具包，另含 TGravity-Work-Search Perplexity 搜索 Skill。支持 /tgravity-onboarding、/tgravity-workcheck、/tgravity-daily、/tgravity-export、/tgravity-search。",
+      "description": "TGravity Work Skills v0.1.6：词元引力内部经营记录与资产交接工具包，另含 TGravity-Work-Search Perplexity 搜索 Skill。支持 /tgravity-onboarding、开启新手教程、/tgravity-workcheck、/tgravity-daily、/tgravity-export、/tgravity-search。",
       "source": "./",
       "strict": false,
-      "version": "0.1.5",
+      "version": "0.1.6",
       "category": "business-operations",
       "keywords": [
         "tokengravity",

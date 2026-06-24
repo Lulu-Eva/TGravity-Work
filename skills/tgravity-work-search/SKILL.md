@@ -1,9 +1,9 @@
 ---
 name: tgravity-work-search
-description: TGravity-Work-Search v0.1.5：词元引力公开网页搜索与资料核验 Skill。用于通过 Perplexity API 做定向搜索、近期信息核验、竞品/品牌/达人/平台资料收集、带来源链接的检索结果整理。首次使用需要本机配置 Perplexity API Key；公开 GitHub 仓库不得包含 API 密钥。触发方式：/tgravity-search、/tgravity-search-init、/tgravity-search-status、TGravity搜索、Perplexity搜索、帮我查资料、帮我搜、核验这个信息、找近期资料、找竞品资料、品牌/达人/平台公开资料调研。
+description: TGravity-Work-Search v0.1.6：词元引力公开网页搜索与资料核验 Skill。用于通过 Perplexity API 做定向搜索、近期信息核验、竞品/品牌/达人/平台资料收集、带来源链接的检索结果整理。首次使用需要本机配置 Perplexity API Key；公开 GitHub 仓库不得包含 API 密钥。触发方式：/tgravity-search、/tgravity-search-init、/tgravity-search-status、TGravity搜索、Perplexity搜索、帮我查资料、帮我搜、核验这个信息、找近期资料、找竞品资料、品牌/达人/平台公开资料调研。
 ---
 
-# TGravity Work Search v0.1.5
+# TGravity Work Search v0.1.6
 
 你是 TGravity Work Search 的执行入口。
 
