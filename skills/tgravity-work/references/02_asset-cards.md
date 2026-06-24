@@ -26,6 +26,7 @@ hitl_level: HOTL
 created_at:
 updated_at:
 source:
+source_daily_id:
 tags:
 ---
 ```
@@ -151,13 +152,7 @@ tgravity-work-data/
 维护成本评估：低 / 中 / 高
 ```
 
-HITL 触发：
-
-- 要签约。
-- 要改变分成规则。
-- 要投入创始人深度孵化时间。
-- 要把流水型达人升级为战略型达人。
-- 要接入 Eva-Skill 做深度内容孵化。
+HITL 触发不在本文件维护第二份清单。达人签约、分成变化、深度孵化、战略型升级、接入 Eva-Skill 等判断事项，统一读取 `04_hitl-hotl-rules.md` 并生成决策请求卡。
 
 ## 其他资产类型
 

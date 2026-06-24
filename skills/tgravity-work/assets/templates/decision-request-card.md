@@ -11,6 +11,7 @@ hitl_level: HITL
 created_at:
 updated_at:
 source:
+source_daily_id:
 tags:
 ---
 

@@ -4,7 +4,7 @@
 
 ## 冲突优先级
 
-0. 如果当前对话正在 `/tgravity-onboarding` 学习模式，用户复制训练示例触发词时，继续按 `05_onboarding-manual.md`；不要切到正式工作入口。
+0. 如果当前对话正在 `/tgravity-onboarding` 学习模式，用户复制训练用的 `/tgravity-workcheck` 或 `/tgravity-daily` 示例时，继续按 `05_onboarding-manual.md`；不要切到正式工作入口。搜索模块只展示“搜索技能”和 `/tgravity-search*` 触发词，不要求用户复制；用户明确要真实搜索时，切到 `tgravity-work-search`。
 1. 用户明确触发 `/tgravity-onboarding`、`/tgravity-daily`、`/tgravity-export` 时，进入对应入口。
 2. 用户明确触发 `/tgravity-workcheck`、`/tgravity-task`，或问“这件工作你能做吗”“这件工作 AI 能不能做”“帮我拆工作”“我该用哪个 Agent 做”，进入 `10_workcheck-task-split.md`。
 3. 用户涉及报价、签约、合同、回款异常、退款坏账、对外承诺时，进入 HITL 决策升级。

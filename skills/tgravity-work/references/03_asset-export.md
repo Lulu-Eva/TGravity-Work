@@ -49,7 +49,7 @@ tgravity-work-data/exports/YYYY-MM-DD_HHMM_TGravity资产包/
 ## INDEX.csv 字段
 
 ```text
-asset_id,asset_type,title,source_path,export_path,owner,business_line,status,risk_level,last_modified,missing_fields,tags
+asset_id,asset_type,title,source_path,export_path,owner,business_line,status,risk_level,source_daily_id,last_modified,missing_fields,tags
 ```
 
 ## 不默认导出

@@ -68,6 +68,8 @@ GMV
 
 使用 `assets/templates/daily-report.md`。不要在本文件维护第二份模板。
 
+日报模板自带资产卡 YAML 头部，但模板必须保持 `tgravity_asset: false`。只有用户明确保存正式日报并补齐必填字段时，才把副本改为 `tgravity_asset: true`。
+
 ## 资产卡动作三档
 
 | 用户说法 | 动作 |
@@ -89,6 +91,8 @@ GMV
 | 商单进入报价、合同、执行、验收、回款任一阶段 | 更新 `deal_progress`，读取 `07_deal-pipeline.md` |
 | 商单结案、终止、停滞超过 14 天 | 生成 `deal_review` 草稿，读取 `08_deal-review.md` |
 | 报价、签约、合同、回款异常、大额商单 | 生成决策请求卡，读取 `04_hitl-hotl-rules.md` |
+
+如果从某篇日报派生资产卡，在派生资产卡 YAML 中填写 `source_daily_id`，指向源日报的 `asset_id`。
 
 ## 保存规则
 

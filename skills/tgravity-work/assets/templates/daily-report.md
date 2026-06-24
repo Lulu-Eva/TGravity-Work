@@ -1,3 +1,20 @@
+---
+tgravity_asset: false
+asset_id:
+asset_type: daily_report
+title:
+owner:
+business_line: 词元引力
+status: draft
+risk_level: low
+hitl_level: HOTL
+created_at:
+updated_at:
+source:
+source_daily_id:
+tags:
+---
+
 # {{display_name}}的工作日报
 
 日期：
