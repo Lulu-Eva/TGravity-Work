@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": ["clips"],
+  "properties": {
+    "clips": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["script_id", "caption", "duration", "effect", "transition", "needs_review"],
+        "properties": {
+          "script_id": { "type": "string" },
+          "caption": { "type": "string" },
+          "duration": { "type": "number" },
+          "video_start": { "type": ["number", "null"] },
+          "video_end": { "type": ["number", "null"] },
+          "effect": { "type": "string" },
+          "transition": { "type": "string" },
+          "needs_review": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

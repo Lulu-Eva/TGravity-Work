@@ -1,0 +1,64 @@
+{
+  "styles": [
+    {
+      "id": "cyber-blueprint",
+      "name": "赛博蓝图 Cyber Blueprint",
+      "aliases": ["1", "01", "第一个", "第1个", "第一", "赛博蓝图", "Cyber Blueprint", "cyber blueprint"],
+      "recommendation": "默认",
+      "best_for": "Codex 教程、软件演示、AI 工作流",
+      "visual_keywords": ["dark grid", "cyan neon lines", "workflow nodes", "blueprint"],
+      "motion_keywords": ["path drawing", "node glow", "card float-in"],
+      "prompt": "Create a cyber blueprint tech canvas video with dark blue-gray grid background, cyan neon workflow lines, glowing process cards, and precise software tutorial pacing."
+    },
+    {
+      "id": "dark-launch",
+      "name": "黑金发布会 Dark Launch",
+      "aliases": ["2", "02", "第二个", "第2个", "第二", "黑金发布会", "Dark Launch", "dark launch"],
+      "recommendation": "备选",
+      "best_for": "课程发布、产品发布、成交案例",
+      "visual_keywords": ["black background", "gold highlights", "spotlight", "premium typography"],
+      "motion_keywords": ["light sweep", "title push-in", "data burst"],
+      "prompt": "Create a premium dark launch video with black background, gold highlights, strong title hierarchy, spotlight motion, and polished launch-event pacing."
+    },
+    {
+      "id": "glass-dashboard",
+      "name": "玻璃仪表盘 Glass Dashboard",
+      "aliases": ["3", "03", "第三个", "第3个", "第三", "玻璃仪表盘", "Glass Dashboard", "glass dashboard"],
+      "recommendation": "备选",
+      "best_for": "数据看板、运营复盘、工具介绍",
+      "visual_keywords": ["glass panels", "soft borders", "dashboard modules", "blurred depth"],
+      "motion_keywords": ["panel stacking", "number count-up", "module switching"],
+      "prompt": "Create a glassmorphism dashboard video with translucent panels, soft glowing borders, modular information layout, and clean data-driven transitions."
+    },
+    {
+      "id": "data-radar",
+      "name": "数据雷达 Data Radar",
+      "aliases": ["4", "04", "第四个", "第4个", "第四", "数据雷达", "Data Radar", "data radar"],
+      "recommendation": "备选",
+      "best_for": "分析报告、竞品研究、账号诊断",
+      "visual_keywords": ["radar scan", "coordinates", "metric dots", "ring charts"],
+      "motion_keywords": ["scan sweep", "metric pop", "trajectory connect"],
+      "prompt": "Create a data radar analysis video with scanning rings, coordinate grids, animated metric points, and analytical motion graphics."
+    },
+    {
+      "id": "minimal-tech",
+      "name": "极简科技 Minimal Tech",
+      "aliases": ["5", "05", "第五个", "第5个", "第五", "极简科技", "Minimal Tech", "minimal tech"],
+      "recommendation": "备选",
+      "best_for": "高质感口播、知识讲解、观点短视频",
+      "visual_keywords": ["minimal layout", "thin lines", "high whitespace", "subtle accent"],
+      "motion_keywords": ["line reveal", "text fade", "light parallax"],
+      "prompt": "Create a minimal tech explainer video with restrained typography, thin line reveals, generous whitespace, and understated premium motion."
+    },
+    {
+      "id": "product-roadmap",
+      "name": "产品路线图 Product Roadmap",
+      "aliases": ["6", "06", "第六个", "第6个", "第六", "产品路线图", "Product Roadmap", "product roadmap"],
+      "recommendation": "备选",
+      "best_for": "方法论拆解、教程步骤、项目路径",
+      "visual_keywords": ["roadmap", "stage cards", "progress line", "side navigation"],
+      "motion_keywords": ["route progress", "node activation", "camera pan"],
+      "prompt": "Create a product roadmap video with animated progress lines, staged method cards, node activation, and clear step-by-step tutorial rhythm."
+    }
+  ]
+}

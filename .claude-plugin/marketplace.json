@@ -4,13 +4,13 @@
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skills 0.1 beta：词元引力内部工作协作工具包。主入口只做路由，能力拆分为新手教程、称呼配置、开工审查、日报、资产卡、资产导出、大项目审视、搜索、视频、发票整理和项目文件夹整理等独立 Skill。",
+    "description": "TGravity Work Skills 0.1 beta：词元引力内部工作协作工具包。主入口只做路由，能力拆分为新手教程、称呼配置、目标提示词规范、开工审查、日报、资产卡、资产导出、大项目审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票整理和项目文件夹整理等独立 Skill。",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "TGravity Work Skills",
-      "description": "TGravity Work Skills 0.1 beta：主入口只路由，子 Skill 独立处理新手教程、开工审查、日报、资产卡、导出、大项目行动前审视、搜索、视频素材索引、发票报销整理和项目文件夹整理。",
+      "description": "TGravity Work Skills 0.1 beta：主入口只路由，子 Skill 独立处理新手教程、目标提示词规范、开工审查、日报、资产卡、导出、大项目行动前审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票报销整理和项目文件夹整理。",
       "source": "./",
       "strict": false,
       "version": "0.1.0",
@@ -21,6 +21,12 @@
         "router",
         "onboarding",
         "profile",
+        "goal",
+        "goal-prompt",
+        "target-brief",
+        "goal-clarification",
+        "problem-brief",
+        "agent-delegation",
         "daily-report",
         "workcheck",
         "task-split",
@@ -34,6 +40,14 @@
         "asset-export",
         "search",
         "video-indexer",
+        "tech-canvas-video",
+        "codex-video",
+        "hyperframes",
+        "html-gsap",
+        "background-mp4",
+        "video-production",
+        "script-driven-editing",
+        "dedao-brain",
         "video-analysis",
         "contact-sheet",
         "transcript-alignment",
@@ -60,6 +74,7 @@
         "./skills/tgravity-work",
         "./skills/tgravity-work-onboarding",
         "./skills/tgravity-work-profile",
+        "./skills/tgravity-work-goal",
         "./skills/tgravity-work-workcheck",
         "./skills/tgravity-work-daily-report",
         "./skills/tgravity-work-asset-cards",
@@ -67,6 +82,7 @@
         "./skills/tgravity-work-preflight-review",
         "./skills/tgravity-work-search",
         "./skills/tgravity-work-video-indexer",
+        "./skills/tgravity-work-tech-canvas-video",
         "./skills/tgravity-work-invoice-reimbursement",
         "./skills/tgravity-work-project-folder-organizer"
       ]

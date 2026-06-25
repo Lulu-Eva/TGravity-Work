@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work"
   short_description: "TGravity Work 主入口路由分发器"
-  default_prompt: "Use $tgravity-work only to route the user to the right TGravity child skill: onboarding, profile, workcheck, daily report, asset cards, asset export, preflight review, search, video indexer, invoice reimbursement, or project folder organizer."
+  default_prompt: "Use $tgravity-work only to route the user to the right TGravity child skill: onboarding, profile, goal prompt, workcheck, daily report, asset cards, asset export, preflight review, search, video indexer, tech canvas video, invoice reimbursement, or project folder organizer."

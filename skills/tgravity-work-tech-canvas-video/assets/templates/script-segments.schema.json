@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["segments"],
+  "properties": {
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "intent", "duration_hint", "visual_need"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "intent": { "type": "string" },
+          "duration_hint": { "type": "number" },
+          "visual_need": { "type": "string" },
+          "needs_review": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

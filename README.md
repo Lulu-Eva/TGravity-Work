@@ -2,7 +2,7 @@
 
 TGravity Work Skills 是词元引力内部工作协作 Skill 包。
 
-当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgravity-work` 只负责判断用户该用哪个子 Skill，不做日报、资产卡、搜索、视频、发票、项目审视或文件夹整理。
+当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgravity-work` 只负责判断用户该用哪个子 Skill，不做目标规范、日报、资产卡、搜索、视频、科技画布、发票、项目审视或文件夹整理。
 
 当前阶段：`0.1 beta`
 
@@ -31,6 +31,7 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 | `tgravity-work` | 主入口，只路由，不做具体任务 |
 | `tgravity-work-onboarding` | 新员工小白入门、动态教学、操作手册 |
 | `tgravity-work-profile` | 本机使用者称呼、日报提交人、默认决策对象 |
+| `tgravity-work-goal` | 混乱目标、问题或 AI 委托改写成 Agent 可用目标提示词 |
 | `tgravity-work-workcheck` | 开工前工作审查、任务定义、人机分工 |
 | `tgravity-work-daily-report` | 口喷、语音转文字、流水账整理成 Markdown 日报 |
 | `tgravity-work-asset-cards` | 达人卡、品牌卡、商单卡、复盘卡、决策请求卡 |
@@ -38,6 +39,7 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 | `tgravity-work-preflight-review` | 大项目行动前审视，60/80/120 和 11 问闸门 |
 | `tgravity-work-search` | Perplexity + Tavily 双引擎公开网页搜索 |
 | `tgravity-work-video-indexer` | 视频素材索引、逐字稿对齐、contact sheet、切片表 |
+| `tgravity-work-tech-canvas-video` | 已剪好气口的人像视频 + 逐字稿 -> HTML/GSAP 科技画布 -> 可验收背景动画 MP4 |
 | `tgravity-work-invoice-reimbursement` | 文本型 PDF 发票报销整理、去重和复查 |
 | `tgravity-work-project-folder-organizer` | 项目文件夹审计、目录整理提案、极简 AGENTS/CLAUDE/SOURCE_OF_TRUTH 生成 |
 
@@ -48,6 +50,8 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 /tgravity-work
 开启新手教程
 我该怎么称呼你
+目标提示词
+目标规范
 开工前检查
 工作任务拆解
 TGravity日报
@@ -60,6 +64,8 @@ TGravity日报
 大项目行动前审视
 搜索技能
 视频分析技能
+科技画布
+Codex剪视频
 发票报销
 项目文件夹整理
 生成 AGENTS.md
@@ -74,6 +80,16 @@ TGravity日报
 ```
 
 新手教程会先识别当前安装的 TGravity 子 Skill，再按员工需求一步一步带练。它不是固定讲稿。
+
+## 目标提示词规范
+
+当你的表达还停在“我想做大”“我要做个人 IP”“这个问题怎么交给 AI”这种半成形状态时，先用：
+
+```text
+目标提示词：{把你脑子里的原话丢进来}
+```
+
+这个 Skill 只把目标、问题或 AI 委托规范成可检查、可交给 Agent 的目标提示词，不拆任务、不分配工作、不生成执行方案。目标清楚后，才交给 `tgravity-work-workcheck` 做任务审查。
 
 ## 大项目行动前审视
 
@@ -126,6 +142,43 @@ python3 -m pip install --user pillow
 /tgravity-video-check
 ```
 
+## 科技画布视频 Skill 环境
+
+科技画布视频 Skill 默认不调用腾讯云 ASR。生产模式推荐先提供已剪好气口的 `input/source.mp4`，以及 `input/script.md`、`input/script.srt` 或 `input/script.vtt`；没有脚本时可用本地 Python `whisper` 从 `input/source.mp4` 生成逐字稿草案。
+
+OpenMontage 可以作为架构参考，但不能作为本 Skill 的能力承诺。本 Skill 不是“一键成片”系统，不负责调研、TTS、素材生成、音乐、字幕或人像合成。它负责生成可在剪映中叠人像的科技画布背景动画 MP4，并输出机器验收报告。
+
+确定交付：
+
+```text
+analysis/script_segments.json
+analysis/timeline.json
+input/script.srt（走本地转写时）
+input/script.vtt（用户提供 VTT 时）
+analysis/transcript.json（走本地转写时）
+overview/index.html
+hyperframes/index.html
+output/background.mp4
+output/render_report.json
+output/validation_report.json
+output/production_manifest.json
+output/validation_frames/
+```
+
+`input/source.mp4` 用于锁定背景动画时长。默认渲染链路是 Chrome 逐帧截图 + FFmpeg 编码，不调用 `npx hyperframes render`。
+
+检查：
+
+```text
+/tgravity-tech-video-check
+```
+
+生产：
+
+```bash
+python3 skills/tgravity-work-tech-canvas-video/scripts/tech_canvas_pipeline.py produce --workspace "<项目根目录>" --style cyber-blueprint
+```
+
 ## 发票 Skill 环境
 
 发票 Skill 依赖：
@@ -175,12 +228,16 @@ tgravity-work-search-data/
 ## 开发校验
 
 ```bash
-for skill in skills/tgravity-work skills/tgravity-work-onboarding skills/tgravity-work-profile skills/tgravity-work-workcheck skills/tgravity-work-daily-report skills/tgravity-work-asset-cards skills/tgravity-work-asset-export skills/tgravity-work-preflight-review skills/tgravity-work-search skills/tgravity-work-video-indexer skills/tgravity-work-invoice-reimbursement skills/tgravity-work-project-folder-organizer; do
+for skill in skills/tgravity-work skills/tgravity-work-onboarding skills/tgravity-work-profile skills/tgravity-work-goal skills/tgravity-work-workcheck skills/tgravity-work-daily-report skills/tgravity-work-asset-cards skills/tgravity-work-asset-export skills/tgravity-work-preflight-review skills/tgravity-work-search skills/tgravity-work-video-indexer skills/tgravity-work-tech-canvas-video skills/tgravity-work-invoice-reimbursement skills/tgravity-work-project-folder-organizer; do
   python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py "$skill"
 done
 
 python3 skills/tgravity-work-asset-export/scripts/validate_asset_cards.py --source skills/tgravity-work-asset-cards/assets/templates
 python3 skills/tgravity-work-search/scripts/dual_search.py --status
 python3 skills/tgravity-work-video-indexer/scripts/video_pipeline.py check --json
+python3 skills/tgravity-work-tech-canvas-video/scripts/tech_canvas_pipeline.py check --json
 python3 skills/tgravity-work-invoice-reimbursement/scripts/invoice_reimbursement.py check
+python3 tests/smoke_tgravity_work.py --quick
 ```
+
+科技画布生产链路需要 `input/source.mp4` 和 `input/script.md` / `input/script.srt` / `input/script.vtt`，然后运行 `produce -> validate`；无脚本时可在用户允许后加 `--transcribe-if-missing`。
