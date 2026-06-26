@@ -2,13 +2,13 @@
 
 ## 0. 先判定视频生产类型
 
-如果用户提到 OpenMontage、一键成片、从调研到成片、AI 全流程视频生产、自动调研脚本素材配音成片，先读取：
+如果用户提到一键成片、从调研到成片、AI 全流程视频生产、自动调研脚本素材配音字幕合成，先读取：
 
 ```text
-references/openmontage-patterns.md
+references/full-video-boundary.md
 ```
 
-然后明确：OpenMontage 是端到端 pipeline；本 Skill 只生产可叠人像的科技画布背景动画 MP4，不做人像合成、TTS、音乐、B-roll 素材生成或发布。
+然后明确：本 Skill 只生产可叠人像的科技画布背景动画 MP4，不做人像合成、TTS、音乐、B-roll 素材生成或发布。
 
 如果用户提到 Codex + HyperFrames、科技画布、口播视频包装、知识分享视频包装、脚本拆镜头、字幕重点、节奏安排、HTML/GSAP 动效、背景动画 MP4，继续执行本工作流。
 

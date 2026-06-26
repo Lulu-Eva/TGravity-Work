@@ -524,7 +524,6 @@ def compact_text(text: str, limit: int = 42) -> str:
 def extract_keywords(text: str, intent: str = "", max_items: int = 4) -> list[str]:
     clean = re.sub(r"\s+", " ", str(text or "")).strip()
     candidates = [
-        ("OpenMontage", "OpenMontage"),
         ("HyperFrames", "HyperFrames"),
         ("hyper frame", "HyperFrames"),
         ("Codex", "Codex"),

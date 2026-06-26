@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Prompt Architect"
+  short_description: "审核提示词架构，生成智能体提示词框架"
+  default_prompt: "Use $tgravity-work-prompt-architect to audit a prompt architecture or generate an agent prompt framework from source material."

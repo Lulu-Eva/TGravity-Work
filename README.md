@@ -2,7 +2,7 @@
 
 TGravity Work Skills 是词元引力内部工作协作 Skill 包。
 
-当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgravity-work` 只负责判断用户该用哪个子 Skill，不做目标规范、日报、资产卡、搜索、视频、科技画布、发票、项目审视或文件夹整理。
+当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgravity-work` 只负责判断用户该用哪个子 Skill，不做目标规范、提示词优化、提示词架构、日报、资产卡、搜索、视频、科技画布、发票、项目审视或文件夹整理。
 
 当前阶段：`0.1 beta`
 
@@ -32,6 +32,8 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 | `tgravity-work-onboarding` | 新员工小白入门、动态教学、操作手册 |
 | `tgravity-work-profile` | 本机使用者称呼、日报提交人、默认决策对象 |
 | `tgravity-work-goal` | 混乱目标、问题或 AI 委托改写成 Agent 可用目标提示词 |
+| `tgravity-work-prompt-optimizer` | 精简完整提示词，压缩冗余规则、重复表达和防御性指令 |
+| `tgravity-work-prompt-architect` | 审核提示词架构，或从语料生成可执行智能体提示词框架 |
 | `tgravity-work-workcheck` | 开工前工作审查、任务定义、人机分工 |
 | `tgravity-work-daily-report` | 口喷、语音转文字、流水账整理成 Markdown 日报 |
 | `tgravity-work-asset-cards` | 达人卡、品牌卡、商单卡、复盘卡、决策请求卡 |
@@ -52,6 +54,13 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 我该怎么称呼你
 目标提示词
 目标规范
+提示词优化
+提示词精简
+优化算法
+提示词架构
+提示词审核
+生成提示词框架
+倒推提示词
 开工前检查
 工作任务拆解
 TGravity日报
@@ -90,6 +99,31 @@ Codex剪视频
 ```
 
 这个 Skill 只把目标、问题或 AI 委托规范成可检查、可交给 Agent 的目标提示词，不拆任务、不分配工作、不生成执行方案。目标清楚后，才交给 `tgravity-work-workcheck` 做任务审查。
+
+## 提示词功能
+
+提示词这一块有两个子功能：
+
+| 功能 | Skill | 适用场景 |
+|---|---|---|
+| 优化算法 | `tgravity-work-prompt-optimizer` | 已经有一份完整提示词，要在不改变原意的前提下压缩、删减、重排 |
+| 架构师 | `tgravity-work-prompt-architect` | 要审核提示词结构，或从语料、角色说明、输出样例生成提示词框架 |
+
+优化已有提示词时，使用：
+
+```text
+提示词优化：{贴完整提示词}
+```
+
+这个 Skill 会一问一停地走质疑需求、删减、简化、加速、模板化和精简报告，不会给提示词新增原本没有的能力。
+
+当你要检查一个提示词是否结构自洽，或从语料倒推出可执行的智能体提示词框架时，使用：
+
+```text
+提示词架构：{贴提示词、语料、角色说明或输出样例}
+```
+
+这个 Skill 只处理提示词内部逻辑，不做普通文案润色，不在提示词正文里写外部出处或制作过程。
 
 ## 大项目行动前审视
 
@@ -146,7 +180,7 @@ python3 -m pip install --user pillow
 
 科技画布视频 Skill 默认不调用腾讯云 ASR。生产模式推荐先提供已剪好气口的 `input/source.mp4`，以及 `input/script.md`、`input/script.srt` 或 `input/script.vtt`；没有脚本时可用本地 Python `whisper` 从 `input/source.mp4` 生成逐字稿草案。
 
-OpenMontage 可以作为架构参考，但不能作为本 Skill 的能力承诺。本 Skill 不是“一键成片”系统，不负责调研、TTS、素材生成、音乐、字幕或人像合成。它负责生成可在剪映中叠人像的科技画布背景动画 MP4，并输出机器验收报告。
+本 Skill 不是“一键成片”系统，不负责调研、TTS、素材生成、音乐、字幕或人像合成。它负责生成可在剪映中叠人像的科技画布背景动画 MP4，并输出机器验收报告。
 
 确定交付：
 
@@ -228,11 +262,11 @@ tgravity-work-search-data/
 ## 开发校验
 
 ```bash
-for skill in skills/tgravity-work skills/tgravity-work-onboarding skills/tgravity-work-profile skills/tgravity-work-goal skills/tgravity-work-workcheck skills/tgravity-work-daily-report skills/tgravity-work-asset-cards skills/tgravity-work-asset-export skills/tgravity-work-preflight-review skills/tgravity-work-search skills/tgravity-work-video-indexer skills/tgravity-work-tech-canvas-video skills/tgravity-work-invoice-reimbursement skills/tgravity-work-project-folder-organizer; do
+for skill in skills/tgravity-work skills/tgravity-work-onboarding skills/tgravity-work-profile skills/tgravity-work-goal skills/tgravity-work-prompt-optimizer skills/tgravity-work-prompt-architect skills/tgravity-work-workcheck skills/tgravity-work-daily-report skills/tgravity-work-asset-cards skills/tgravity-work-asset-export skills/tgravity-work-preflight-review skills/tgravity-work-search skills/tgravity-work-video-indexer skills/tgravity-work-tech-canvas-video skills/tgravity-work-invoice-reimbursement skills/tgravity-work-project-folder-organizer; do
   python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py "$skill"
 done
 
-python3 skills/tgravity-work-asset-export/scripts/validate_asset_cards.py --source skills/tgravity-work-asset-cards/assets/templates
+python3 skills/tgravity-work-asset-export/scripts/validate_asset_cards.py --source tests/fixtures/asset-cards
 python3 skills/tgravity-work-search/scripts/dual_search.py --status
 python3 skills/tgravity-work-video-indexer/scripts/video_pipeline.py check --json
 python3 skills/tgravity-work-tech-canvas-video/scripts/tech_canvas_pipeline.py check --json

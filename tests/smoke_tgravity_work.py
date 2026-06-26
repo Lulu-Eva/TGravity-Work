@@ -13,8 +13,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+ROUTER_SKILL = ROOT / "skills" / "tgravity-work" / "SKILL.md"
 GOAL_SKILL = ROOT / "skills" / "tgravity-work-goal" / "SKILL.md"
+ASSET_CARDS_SKILL = ROOT / "skills" / "tgravity-work-asset-cards" / "SKILL.md"
+PROMPT_OPTIMIZER_SKILL = ROOT / "skills" / "tgravity-work-prompt-optimizer" / "SKILL.md"
+PROMPT_ARCHITECT_SKILL = ROOT / "skills" / "tgravity-work-prompt-architect" / "SKILL.md"
 PIPELINE = ROOT / "skills" / "tgravity-work-tech-canvas-video" / "scripts" / "tech_canvas_pipeline.py"
+VALIDATE_ASSET_CARDS = ROOT / "skills" / "tgravity-work-asset-export" / "scripts" / "validate_asset_cards.py"
+ASSET_CARD_FIXTURES = ROOT / "tests" / "fixtures" / "asset-cards"
 
 
 def run(command: list[str], *, cwd: Path = ROOT) -> subprocess.CompletedProcess[str]:
@@ -40,6 +46,96 @@ def assert_goal_skill_contract() -> None:
     if missing:
         raise SystemExit(f"goal skill contract missing: {missing}")
     print("OK goal skill contract")
+
+
+def assert_router_hitl_contract() -> None:
+    router_text = ROUTER_SKILL.read_text(encoding="utf-8")
+    asset_text = ASSET_CARDS_SKILL.read_text(encoding="utf-8")
+    asset_frontmatter = asset_text.split("---", 2)[1]
+    forbidden = [
+        "决策请求、需要璐璐判断 | `tgravity-work-asset-cards`",
+        "or 需要璐璐判断",
+    ]
+    leaked = [item for item in forbidden if item in router_text or item in asset_frontmatter]
+    if leaked:
+        raise SystemExit(f"HITL marker is still an asset-card trigger: {leaked}")
+    required = [
+        "不能单独决定路由",
+        "生成决策请求卡",
+        "只在当前任务里标记为需要人工判断",
+    ]
+    missing = [item for item in required if item not in router_text and item not in asset_text]
+    if missing:
+        raise SystemExit(f"HITL routing contract missing: {missing}")
+    print("OK router HITL contract")
+
+
+def assert_prompt_architect_contract() -> None:
+    text = PROMPT_ARCHITECT_SKILL.read_text(encoding="utf-8")
+    required = [
+        "模式闸门",
+        "审核模式",
+        "生成模式",
+        "置信度闸门",
+        "判断标准",
+        "架构诊断报告",
+        "工作流主干",
+        "建议保留的设计",
+        "最多输出 5 个漏洞",
+        "优化后的提示词框架",
+        "不输出不可执行建议",
+    ]
+    missing = [item for item in required if item not in text]
+    if missing:
+        raise SystemExit(f"prompt architect skill contract missing: {missing}")
+    forbidden = ["".join(parts) for parts in [
+        ("d", "bs"),
+        ("D", "BS"),
+        ("dont", "besilent"),
+        ("Open", "Montage"),
+        ("open", "montage"),
+    ]]
+    leaked = [item for item in forbidden if item in text]
+    if leaked:
+        raise SystemExit(f"prompt architect skill contains external reference: {leaked}")
+    print("OK prompt architect skill contract")
+
+
+def assert_prompt_optimizer_contract() -> None:
+    text = PROMPT_OPTIMIZER_SKILL.read_text(encoding="utf-8")
+    required = [
+        "输入闸门",
+        "Phase 1：质疑需求",
+        "Phase 2：删减",
+        "Phase 3：简化",
+        "Phase 4：加速",
+        "Phase 5：模板化",
+        "Phase 6：精简报告",
+        "不新增原提示词没有的能力",
+    ]
+    missing = [item for item in required if item not in text]
+    if missing:
+        raise SystemExit(f"prompt optimizer skill contract missing: {missing}")
+    forbidden = ["".join(parts) for parts in [
+        ("d", "bs"),
+        ("D", "BS"),
+        ("dont", "besilent"),
+        ("Open", "Montage"),
+        ("open", "montage"),
+        ("特", "斯拉"),
+        ("马", "斯克"),
+    ]]
+    leaked = [item for item in forbidden if item in text]
+    if leaked:
+        raise SystemExit(f"prompt optimizer skill contains external reference: {leaked}")
+    print("OK prompt optimizer skill contract")
+
+
+def assert_asset_card_fixture_validation() -> None:
+    result = run([sys.executable, str(VALIDATE_ASSET_CARDS), "--source", str(ASSET_CARD_FIXTURES)])
+    if "checked=1" not in result.stdout or "with_missing_fields=0" not in result.stdout:
+        raise SystemExit(f"asset card fixture validation did not scan the expected fixture:\n{result.stdout}")
+    print("OK asset card fixture validation")
 
 
 def write_srt(workspace: Path) -> None:
@@ -137,6 +233,10 @@ def main() -> int:
     args = parser.parse_args()
 
     assert_goal_skill_contract()
+    assert_router_hitl_contract()
+    assert_prompt_optimizer_contract()
+    assert_prompt_architect_contract()
+    assert_asset_card_fixture_validation()
     assert_srt_plan_smoke()
     if args.full or not args.quick:
         assert_produce_validate_smoke()

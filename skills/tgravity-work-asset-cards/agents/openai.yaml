@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work Asset Cards"
   short_description: "达人、品牌、商单和决策资产卡生成更新"
-  default_prompt: "Use $tgravity-work-asset-cards when the user asks 生成资产卡, 更新资产卡, 达人卡, 品牌卡, 商单推进, 商单复盘, 决策请求, or 需要璐璐判断."
+  default_prompt: "Use $tgravity-work-asset-cards when the user asks to generate, update, inspect, or save creator, brand, deal, review, asset, or decision-request cards."
