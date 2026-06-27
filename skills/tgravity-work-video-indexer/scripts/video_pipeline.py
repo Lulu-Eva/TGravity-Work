@@ -350,7 +350,17 @@ def read_text(path: Path) -> str:
 
 
 def run_capture(cmd: List[str], timeout: int = 120) -> Tuple[int, str, str]:
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode("utf-8", errors="replace")
+        if isinstance(stderr, bytes):
+            stderr = stderr.decode("utf-8", errors="replace")
+        timeout_message = f"timeout after {timeout}s: {' '.join(cmd)}"
+        return 124, stdout, (stderr + "\n" + timeout_message).strip()
     return proc.returncode, proc.stdout, proc.stderr
 
 

@@ -10,7 +10,7 @@ references/full-video-boundary.md
 
 然后明确：本 Skill 只生产可叠人像的科技画布背景动画 MP4，不做人像合成、TTS、音乐、B-roll 素材生成或发布。
 
-如果用户提到 Codex + HyperFrames、科技画布、口播视频包装、知识分享视频包装、脚本拆镜头、字幕重点、节奏安排、HTML/GSAP 动效、背景动画 MP4，继续执行本工作流。
+如果用户提到 Codex + HyperFrames、科技画布、口播视频包装、知识分享视频包装、脚本拆镜头、字幕重点、节奏安排、HTML 动效、背景动画 MP4，继续执行本工作流。
 
 ## 1. 输入闸门
 
@@ -111,7 +111,7 @@ python3 scripts/tech_canvas_pipeline.py overview --workspace "<项目根目录>"
 overview/index.html
 ```
 
-生成 HTML/GSAP 科技画布：
+生成本地 HTML 科技画布：
 
 ```bash
 python3 scripts/tech_canvas_pipeline.py hyperframes --workspace "<项目根目录>" --style "<style_id>"

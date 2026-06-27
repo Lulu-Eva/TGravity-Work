@@ -3,7 +3,7 @@
 
 This script intentionally stays local-only. It turns an edited talking-head
 video plus a transcript, or a locally transcribable audio track, into a synced
-HTML/GSAP tech canvas background and a validated MP4 background layer. It does
+local HTML tech canvas background and a validated MP4 background layer. It does
 not call cloud ASR services.
 """
 
@@ -15,8 +15,10 @@ import colorsys
 import importlib.util
 import http.client
 import json
+import os
 import re
 import shutil
+import signal
 import socket
 import struct
 import subprocess
@@ -103,6 +105,16 @@ def ffprobe_duration(path: Path) -> float | None:
     except ValueError:
         return None
     return round(duration, 3) if duration > 0 else None
+
+
+def run_checked(command: list[str], *, text: bool = True, binary: bool = False) -> subprocess.CompletedProcess:
+    result = subprocess.run(command, capture_output=True, text=text and not binary)
+    if result.returncode != 0:
+        stderr = result.stderr if isinstance(result.stderr, str) else result.stderr.decode("utf-8", errors="replace")
+        stdout = result.stdout if isinstance(result.stdout, str) else result.stdout.decode("utf-8", errors="replace")
+        detail = (stderr or stdout or "").strip()
+        raise RuntimeError(f"command failed ({result.returncode}): {' '.join(command)}\n{detail}")
+    return result
 
 
 def source_video_duration(workspace: Path) -> float | None:
@@ -728,7 +740,7 @@ def render_overview_html(styles: list[dict], timeline: dict | None) -> str:
     <header>
       <div>
         <h1>科技画布风格总览</h1>
-        <p class="lead">先选风格，再生成 HTML/GSAP 科技画布，确认后渲染并验收背景动画 MP4。</p>
+        <p class="lead">先选风格，再生成本地 HTML 科技画布，确认后渲染并验收背景动画 MP4。</p>
       </div>
       <aside class="meta">
         <p>脚本段数：{clip_count}</p>
@@ -872,7 +884,7 @@ def run_ffmpeg_image_sequence(frames_dir: Path, fps: int, output_path: Path) -> 
         "+faststart",
         str(output_path),
     ]
-    subprocess.run(command, check=True)
+    run_checked(command)
 
 
 def validate_mp4(path: Path) -> dict:
@@ -893,7 +905,7 @@ def validate_mp4(path: Path) -> dict:
         "json",
         str(path),
     ]
-    result = subprocess.run(command, check=True, capture_output=True, text=True)
+    result = run_checked(command)
     payload = json.loads(result.stdout)
     stream = payload.get("streams", [{}])[0]
     return {
@@ -918,7 +930,7 @@ def ffprobe_stream_info(path: Path) -> dict:
         "json",
         str(path),
     ]
-    result = subprocess.run(command, check=True, capture_output=True, text=True)
+    result = run_checked(command)
     payload = json.loads(result.stdout)
     duration = float(payload.get("format", {}).get("duration") or 0)
     video_stream = next((stream for stream in payload.get("streams", []) if stream.get("codec_type") == "video"), {})
@@ -964,7 +976,7 @@ def extract_validation_frames(mp4_path: Path, output_dir: Path, duration: float)
             "2",
             str(output_path),
         ]
-        subprocess.run(command, check=True)
+        run_checked(command)
         if not output_path.exists() or output_path.stat().st_size == 0:
             raise RuntimeError(f"FFmpeg did not write validation frame at {second:.3f}s: {output_path}")
         outputs.append(str(output_path))
@@ -1108,7 +1120,12 @@ def render_html_to_mp4(
         "--hide-scrollbars",
         "about:blank",
     ]
-    process = subprocess.Popen(chrome_command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    process = subprocess.Popen(
+        chrome_command,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        start_new_session=True,
+    )
     cdp = None
     try:
         wait_for_chrome(port)
@@ -1160,11 +1177,18 @@ def render_html_to_mp4(
     finally:
         if cdp:
             cdp.close()
-        process.terminate()
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
         try:
             process.wait(timeout=3)
         except subprocess.TimeoutExpired:
-            process.kill()
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.wait(timeout=3)
         shutil.rmtree(user_data_dir, ignore_errors=True)
         if not keep_frames:
             shutil.rmtree(frames_parent, ignore_errors=True)
@@ -1189,7 +1213,6 @@ def render_hyperframes_html(style: dict, timeline: dict) -> str:
     duration = float(timeline.get("total_duration") or sum(float(clip.get("duration", 4)) for clip in clips))
     theme = style_theme(style["id"])
     scenes = []
-    timeline_js = []
     scene_payload = []
     rail_nodes = []
 
@@ -1249,13 +1272,6 @@ def render_hyperframes_html(style: dict, timeline: dict) -> str:
       <div class="scan-line"></div>
     </section>"""
         )
-        timeline_js.append(
-            f"""tl.set(scenes[{index}], {{ opacity: 0 }}, 0);
-tl.fromTo(scenes[{index}], {{ opacity: 0, y: 42, scale: 0.982 }}, {{ opacity: 1, y: 0, scale: 1, duration: 0.36, ease: "power2.out" }}, {start:.3f});
-tl.to(scenes[{index}].querySelector(".scan-line"), {{ xPercent: 155, duration: Math.max(0.7, {clip_duration:.3f} - 0.3), ease: "none" }}, {start:.3f});
-tl.to(scenes[{index}], {{ opacity: 0, y: -22, duration: 0.26, ease: "power1.in" }}, {max(start + clip_duration - 0.26, start):.3f});"""
-        )
-
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -1615,7 +1631,6 @@ tl.to(scenes[{index}], {{ opacity: 0, y: -22, duration: 0.26, ease: "power1.in" 
       <span>background render layer</span>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script>
     window.__timelines = window.__timelines || {{}};
     window.__tgravityScenes = {json.dumps(scene_payload, ensure_ascii=False)};
@@ -1660,11 +1675,7 @@ tl.to(scenes[{index}], {{ opacity: 0, y: -22, duration: 0.26, ease: "power1.in" 
         document.getElementById("canvasLoad").textContent = Math.round(progress * 100) + "%";
       }}
     }};
-    const fallbackSeek = (seconds) => {{ renderAt(seconds); }};
-    const tl = window.gsap
-      ? gsap.timeline({{ paused: true }})
-      : {{ set() {{ return this; }}, fromTo() {{ return this; }}, to() {{ return this; }}, seek(seconds) {{ fallbackSeek(seconds); return this; }} }};
-    {chr(10).join(timeline_js)}
+    const tl = {{ seek(seconds) {{ renderAt(seconds); return this; }} }};
     window.__timelines["tgravity-tech-canvas"] = tl;
     window.__tgravityProduction = {{
       style: {json.dumps(style["id"], ensure_ascii=False)},
@@ -1691,7 +1702,7 @@ def command_hyperframes(args: argparse.Namespace) -> int:
     output_path = workspace / "hyperframes" / "index.html"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html, encoding="utf-8")
-    print(f"Wrote HTML/GSAP tech canvas: {output_path}")
+    print(f"Wrote local HTML tech canvas: {output_path}")
     print("Next: render output/background.mp4 after review.")
     return 0
 
@@ -1801,7 +1812,7 @@ def command_produce(args: argparse.Namespace) -> int:
         "transcribed_locally": transcribed_locally,
         "outputs": {
             "overview": str(workspace / "overview" / "index.html"),
-            "html_gsap_canvas": str(workspace / "hyperframes" / "index.html"),
+            "html_canvas": str(workspace / "hyperframes" / "index.html"),
             "background_mp4": str(workspace / "output" / "background.mp4"),
             "render_report": str(workspace / "output" / "render_report.json"),
             "validation_report": str(workspace / "output" / "validation_report.json"),
@@ -1987,7 +1998,7 @@ def command_validate(args: argparse.Namespace) -> int:
         try:
             manifest = load_json(production_manifest_path)
             outputs = manifest.get("outputs", {})
-            required_output_keys = ["html_gsap_canvas", "background_mp4", "render_report", "validation_report", "validation_frames"]
+            required_output_keys = ["html_canvas", "background_mp4", "render_report", "validation_report", "validation_frames"]
             missing_output_keys = [key for key in required_output_keys if key not in outputs]
             items.append(validation_item("production manifest has output paths", not missing_output_keys, f"missing={missing_output_keys}", str(production_manifest_path)))
         except Exception as error:
@@ -2049,7 +2060,7 @@ def build_parser() -> argparse.ArgumentParser:
             subparser.add_argument("--language", default="zh", help="Transcription language. Default: zh")
         subparser.set_defaults(func=func)
 
-    hyperframes_parser = subparsers.add_parser("hyperframes", help="Create HTML/GSAP tech canvas")
+    hyperframes_parser = subparsers.add_parser("hyperframes", help="Create local HTML tech canvas")
     hyperframes_parser.add_argument("--workspace", required=True, help="Project workspace path")
     hyperframes_parser.add_argument("--style", required=True, help="Style id, number, Chinese name, or English display name")
     hyperframes_parser.set_defaults(func=command_hyperframes)

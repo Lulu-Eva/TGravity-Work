@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity MCN Collaboration"
+  short_description: "MCN合作记录事实表和互链来源"
+  default_prompt: "Use $tgravity-work-mcn-collaboration to record a factual MCN collaboration between a creator, brand, and brief."

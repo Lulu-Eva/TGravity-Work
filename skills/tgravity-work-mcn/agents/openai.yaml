@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity Work MCN"
+  short_description: "MCN达人、品牌、Brief和合作资产路由"
+  default_prompt: "Use $tgravity-work-mcn to route MCN creator, brand, brief, collaboration, and relationship-index tasks."

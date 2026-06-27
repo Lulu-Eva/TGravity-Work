@@ -381,7 +381,10 @@ def parse_regular_invoice(path: Path, text: str, company_name: str) -> ParsedInv
 
 
 def parse_pdf(path: Path, extract_text, company_name: str) -> Optional[ParsedInvoice]:
-    text = extract_text(str(path)) or ""
+    try:
+        text = extract_text(str(path)) or ""
+    except Exception as exc:
+        raise RuntimeError(f"PDF 文本抽取失败: {exc}") from exc
     if not clean(text):
         return ParsedInvoice(
             row={header: "" for header in HEADERS},
@@ -633,7 +636,11 @@ def run(args: argparse.Namespace) -> int:
     parsed_rows: List[ParsedInvoice] = []
     seen = set()
     for pdf in pdfs:
-        parsed = parse_pdf(pdf, extract_text, company_name)
+        try:
+            parsed = parse_pdf(pdf, extract_text, company_name)
+        except Exception as exc:
+            stats.failed_files.append((str(pdf), str(exc)))
+            continue
         if not parsed:
             stats.failed_files.append((str(pdf), "解析结果为空"))
             continue

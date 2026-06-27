@@ -16,6 +16,7 @@ import re
 import shutil
 import zipfile
 from pathlib import Path
+from typing import Any
 
 
 ASSET_DIRS = {
@@ -26,6 +27,10 @@ ASSET_DIRS = {
     "deal_review": "reviews",
     "decision_request": "decisions",
     "escalation": "escalations",
+    "mcn_creator_profile": "mcn/creators",
+    "mcn_brand_profile": "mcn/brands",
+    "mcn_reverse_brief": "mcn/briefs",
+    "mcn_collaboration": "mcn/collaborations",
 }
 
 REQUIRED_FIELDS = {
@@ -36,34 +41,98 @@ REQUIRED_FIELDS = {
     "deal_review": ["asset_id", "asset_type", "title", "owner", "status"],
     "decision_request": ["asset_id", "asset_type", "title", "owner", "status"],
     "escalation": ["asset_id", "asset_type", "title", "owner", "status", "risk_level"],
+    "mcn_creator_profile": ["asset_id", "asset_type", "title", "owner", "status"],
+    "mcn_brand_profile": ["asset_id", "asset_type", "title", "owner", "status"],
+    "mcn_reverse_brief": ["asset_id", "asset_type", "title", "owner", "status"],
+    "mcn_collaboration": ["asset_id", "asset_type", "title", "owner", "status"],
 }
 
 
-def parse_frontmatter(path: Path) -> dict[str, str]:
+def parse_scalar(value: str) -> Any:
+    raw = value.strip()
+    if raw in {"[]", ""}:
+        return [] if raw == "[]" else ""
+    if raw.lower() in {"true", "false"}:
+        return raw.lower() == "true"
+    return raw.strip('"').strip("'")
+
+
+def parse_frontmatter(path: Path) -> dict[str, Any]:
     text = path.read_text(encoding="utf-8", errors="replace")
     match = re.match(r"^---\n(.*?)\n---\n", text, flags=re.S)
     if not match:
         return {}
 
-    data: dict[str, str] = {}
-    for line in match.group(1).splitlines():
+    data: dict[str, Any] = {}
+    lines = match.group(1).splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
         if not line.strip() or line.lstrip().startswith("#"):
+            i += 1
             continue
         if ":" not in line:
+            i += 1
             continue
         key, value = line.split(":", 1)
-        data[key.strip()] = value.strip()
+        key = key.strip()
+        value = value.strip()
+        if value == "":
+            array_values: list[str] = []
+            object_values: list[dict[str, str]] = []
+            current: dict[str, str] | None = None
+            j = i + 1
+            while j < len(lines) and lines[j].startswith("  "):
+                item = lines[j].strip()
+                if item.startswith("- "):
+                    payload = item[2:].strip()
+                    if ":" in payload:
+                        if current:
+                            object_values.append(current)
+                        current = {}
+                        item_key, item_value = payload.split(":", 1)
+                        current[item_key.strip()] = str(parse_scalar(item_value))
+                    else:
+                        array_values.append(str(parse_scalar(payload)))
+                elif current is not None and ":" in item:
+                    item_key, item_value = item.split(":", 1)
+                    current[item_key.strip()] = str(parse_scalar(item_value))
+                j += 1
+            if current:
+                object_values.append(current)
+            if object_values:
+                data[key] = object_values
+                i = j
+                continue
+            if array_values:
+                data[key] = array_values
+                i = j
+                continue
+        data[key] = parse_scalar(value)
+        i += 1
     return data
 
 
-def is_true(value: str | None) -> bool:
-    return (value or "").strip().lower() in {"true", "yes", "1"}
+def text_value(value: Any) -> str:
+    if isinstance(value, list):
+        return ";".join(text_value(item) for item in value)
+    if isinstance(value, dict):
+        return ";".join(f"{key}:{text_value(item)}" for key, item in value.items())
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return str(value or "")
 
 
-def missing_fields(meta: dict[str, str]) -> list[str]:
-    asset_type = meta.get("asset_type", "")
+def is_true(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return text_value(value).strip().lower() in {"true", "yes", "1"}
+
+
+def missing_fields(meta: dict[str, Any]) -> list[str]:
+    asset_type = text_value(meta.get("asset_type", ""))
     fields = REQUIRED_FIELDS.get(asset_type, ["asset_id", "asset_type", "title", "owner", "status"])
-    return [field for field in fields if not meta.get(field)]
+    return [field for field in fields if not text_value(meta.get(field))]
 
 
 def safe_name(path: Path) -> str:
@@ -187,7 +256,7 @@ def export_assets(source: Path, output_root: Path) -> tuple[Path, Path, int]:
     export_dir.mkdir(parents=True, exist_ok=True)
 
     for dirname in sorted(set(ASSET_DIRS.values()) | {"raw"}):
-        (export_dir / dirname).mkdir(exist_ok=True)
+        (export_dir / dirname).mkdir(parents=True, exist_ok=True)
 
     rows: list[dict[str, str]] = []
     for path in source.rglob("*.md"):
@@ -198,7 +267,7 @@ def export_assets(source: Path, output_root: Path) -> tuple[Path, Path, int]:
         meta = parse_frontmatter(path)
         if not is_true(meta.get("tgravity_asset")):
             continue
-        asset_type = meta.get("asset_type", "raw")
+        asset_type = text_value(meta.get("asset_type", "raw"))
         target_dir = export_dir / ASSET_DIRS.get(asset_type, "raw")
         target = target_dir / safe_name(path)
         if target.exists():
@@ -207,19 +276,19 @@ def export_assets(source: Path, output_root: Path) -> tuple[Path, Path, int]:
 
         missing = missing_fields(meta)
         rows.append({
-            "asset_id": meta.get("asset_id", ""),
+            "asset_id": text_value(meta.get("asset_id", "")),
             "asset_type": asset_type,
-            "title": meta.get("title", ""),
+            "title": text_value(meta.get("title", "")),
             "source_path": str(path),
             "export_path": str(target),
-            "owner": meta.get("owner", ""),
-            "business_line": meta.get("business_line", ""),
-            "status": meta.get("status", ""),
-            "risk_level": meta.get("risk_level", ""),
-            "source_daily_id": meta.get("source_daily_id", ""),
+            "owner": text_value(meta.get("owner", "")),
+            "business_line": text_value(meta.get("business_line", "")),
+            "status": text_value(meta.get("status", "")),
+            "risk_level": text_value(meta.get("risk_level", "")),
+            "source_daily_id": text_value(meta.get("source_daily_id", "")),
             "last_modified": dt.datetime.fromtimestamp(path.stat().st_mtime).isoformat(timespec="seconds"),
             "missing_fields": ";".join(missing),
-            "tags": meta.get("tags", ""),
+            "tags": text_value(meta.get("tags", "")),
         })
 
     index_path = export_dir / "INDEX.csv"

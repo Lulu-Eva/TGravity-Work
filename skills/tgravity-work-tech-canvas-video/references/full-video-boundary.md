@@ -33,7 +33,7 @@ input/source.mp4
 先把需求收敛为背景动画层：
 
 ```text
-当前 Skill 只交付科技画布背景动画 MP4：input/source.mp4 + 脚本或逐字稿 -> timeline -> HTML/GSAP 画布 -> output/background.mp4 -> validation_report。最终人像合成、字幕、音乐和发布需要另起完整成片流程。
+当前 Skill 只交付科技画布背景动画 MP4：input/source.mp4 + 脚本或逐字稿 -> timeline -> 本地 HTML 画布 -> output/background.mp4 -> validation_report。最终人像合成、字幕、音乐和发布需要另起完整成片流程。
 ```
 
 ## 可接受的输入

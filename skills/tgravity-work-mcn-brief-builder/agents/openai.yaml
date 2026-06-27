@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGravity MCN Brief Builder"
+  short_description: "MCN品牌需求逆向Brief结构化整理"
+  default_prompt: "Use $tgravity-work-mcn-brief-builder to turn fuzzy brand needs into a structured reverse brief."

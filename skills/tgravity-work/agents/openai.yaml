@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work"
   short_description: "TGravity Work 主入口路由分发器"
-  default_prompt: "Use $tgravity-work only as the TGravity router for onboarding, profile, goal prompt, prompt optimizer, prompt architect, workcheck, daily report, asset cards, asset export, preflight review, search, video indexer, tech canvas video, invoice reimbursement, or project folder organizer."
+  default_prompt: "Use $tgravity-work only as the TGravity router for onboarding, profile, goal prompt, prompt optimizer, prompt architect, workcheck, daily report, asset cards, MCN assets, asset export, preflight review, search, video indexer, tech canvas video, invoice reimbursement, or project folder organizer."

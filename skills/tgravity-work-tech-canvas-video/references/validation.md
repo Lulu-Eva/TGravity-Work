@@ -45,7 +45,7 @@ analysis/transcript.json
 - `output/background.mp4` 时长必须与 `input/source.mp4` 接近；误差超过 0.25 秒视为不同步，验收失败。
 - `output/render_report.json` 记录输出路径、时长、分辨率、fps、源 HTML 和生成时间。
 - `output/validation_report.json` 的 `passed` 必须为 `true`。
-- `output/production_manifest.json` 必须存在，并指向背景 MP4、HTML/GSAP 文件、渲染报告和验收报告。
+- `output/production_manifest.json` 必须存在，并指向背景 MP4、本地 HTML 文件、渲染报告和验收报告。
 - `output/validation_frames/` 至少包含 3 张抽帧图。
 - 抽帧必须通过非空画面检查：不能是黑屏、空白帧或几乎没有亮度变化的画面。
 - 项目文件都在用户项目目录内。
@@ -94,7 +94,7 @@ find "$WORKSPACE/output/validation_frames" -name 'sample_*.jpg' | wc -l
 cd hyperframes && npx hyperframes lint
 ```
 
-没有实际执行前，只能称为 HyperFrames-compatible HTML/GSAP 画布。
+没有实际执行前，只能称为本地 HTML 画布草案。
 
 ## 人工复核
 

@@ -232,6 +232,20 @@ def fail(engine: str, error: str, failure_type: str = "unknown", status_code: in
     return result
 
 
+def response_json(engine: str, resp: Any) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+    try:
+        data = resp.json()
+    except Exception as exc:
+        message = f"{engine} 返回非 JSON 响应"
+        detail = str(exc).strip()
+        if detail:
+            message = f"{message}: {detail}"
+        return None, fail(engine.lower(), message, "invalid_json", getattr(resp, "status_code", None))
+    if not isinstance(data, dict):
+        return None, fail(engine.lower(), f"{engine} JSON 响应不是对象", "invalid_json", getattr(resp, "status_code", None))
+    return data, None
+
+
 def perplexity_search(query: str, model: str, recency: str, timeout: int) -> dict[str, Any]:
     api_key, source = resolve_key("PERPLEXITY_API_KEY")
     if not api_key:
@@ -264,7 +278,9 @@ def perplexity_search(query: str, model: str, recency: str, timeout: int) -> dic
         info = classify_http_failure("Perplexity", resp.status_code, resp.text[:1000])
         return fail("perplexity", info["message"], info["type"], resp.status_code)
 
-    data = resp.json()
+    data, json_failure = response_json("Perplexity", resp)
+    if json_failure:
+        return json_failure
     return {
         "engine": "perplexity",
         "ok": True,
@@ -306,7 +322,9 @@ def tavily_search(query: str, search_depth: str, max_results: int, timeout: int)
         info = classify_http_failure("Tavily", resp.status_code, resp.text[:1000])
         return fail("tavily", info["message"], info["type"], resp.status_code)
 
-    data = resp.json()
+    data, json_failure = response_json("Tavily", resp)
+    if json_failure:
+        return json_failure
     return {
         "engine": "tavily",
         "ok": True,
