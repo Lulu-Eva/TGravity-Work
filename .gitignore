@@ -7,9 +7,9 @@ __pycache__/
 *.pyc
 
 # Runtime data and generated exports must stay local.
-tgravity-work-data/
-tgravity-work-exports/
-tgravity-work-search-data/
+tgw-data/
+tgw-exports/
+tgw-search-data/
 视频素材工作区/
 thumbs_raw/
 contact_sheets/
