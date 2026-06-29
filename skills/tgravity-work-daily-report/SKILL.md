@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-daily-report
-description: TGravity Work 每日日报 Skill。用于把员工自然口喷、语音转文字、聊天流水、品牌/达人/商单进展整理成 Markdown 工作日报，自动区分今日完成、商单推进、回款金额、风险卡点、明日计划和需要璐璐判断事项。触发方式：/tgravity-daily、TGravity日报、工作日报、生成今天日报、保存今天日报、今天我口喷一下、把这段整理成日报。
+description: TGravity Work 每日日报 Skill。用于把员工自然口喷、语音转文字、聊天流水、品牌/达人/商单进展整理成 Markdown 工作日报，自动区分今日完成、商单推进、回款金额、风险卡点、明日计划和需要璐璐判断事项。触发方式：/TGW-daily、TGravity日报、工作日报、生成今天日报、保存今天日报、今天我口喷一下、把这段整理成日报。
 ---
 
 # TGravity Work Daily Report

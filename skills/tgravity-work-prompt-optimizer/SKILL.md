@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-prompt-optimizer
-description: TGravity Work 提示词优化算法 Skill。用于精简已有的完整可执行提示词，在不改变原意和能力边界的前提下，按“质疑需求、删减、简化、加速、模板化、报告”的顺序压缩冗余规则、重复表达、防御性指令和低价值示例。触发方式：提示词优化、提示词精简、精简提示词、压缩提示词、提示词减法、优化算法、把这个提示词变短、/tgravity-prompt-optimizer。
+description: TGravity Work 提示词优化算法 Skill。用于精简已有的完整可执行提示词，在不改变原意和能力边界的前提下，按“质疑需求、删减、简化、加速、模板化、报告”的顺序压缩冗余规则、重复表达、防御性指令和低价值示例。触发方式：提示词优化、提示词精简、精简提示词、压缩提示词、提示词减法、优化算法、把这个提示词变短、/TGW-prompt-optimizer。
 ---
 
 # TGravity Work Prompt Optimizer

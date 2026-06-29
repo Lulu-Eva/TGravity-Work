@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-onboarding
-description: TGravity Work 新手小白入门和动态操作手册 Skill。用于新员工不知道怎么使用桌面 Agent、Skill、TGravity Work 工具包时，进行一步一步教学、继续下一课、解释各子 Skill 能做什么不能做什么。触发方式：开启新手教程、/tgravity-onboarding、继续下一课、TGravity入职培训、TGravity操作手册、教我怎么用、新员工怎么用、带我学TGravity Work。
+description: TGravity Work 新手小白入门和动态操作手册 Skill。用于新员工不知道怎么使用桌面 Agent、Skill、TGravity Work 工具包时，进行一步一步教学、继续下一课、解释各子 Skill 能做什么不能做什么。触发方式：开启新手教程、/TGW-onboarding、继续下一课、TGravity入职培训、TGravity操作手册、教我怎么用、新员工怎么用、带我学TGravity Work。
 ---
 
 # TGravity Work Onboarding

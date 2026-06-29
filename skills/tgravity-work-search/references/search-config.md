@@ -102,7 +102,7 @@ python3 scripts/dual_search.py --status
 
 ## 依赖检查
 
-`/tgravity-search-status` 和初始化不依赖第三方库；真实搜索需要 Python `requests`。
+`/TGW-search-status` 和初始化不依赖第三方库；真实搜索需要 Python `requests`。
 
 如果执行搜索时提示：
 

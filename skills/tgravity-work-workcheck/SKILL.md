@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-workcheck
-description: TGravity Work 开工前工作审查与任务拆解 Skill。用于员工开始一项工作前，先定义工作、判断 AI 能不能做、拆分人类和 AI 各自任务，并建议 Codex、WorkBuddy、Manus、TGravity Work Search、Video Indexer、Invoice Reimbursement 等工具分工。触发方式：/tgravity-workcheck、/tgravity-task、开工前检查、工作审查、工作任务拆解、这件工作 AI 能做吗、先问 AI、帮我拆工作。
+description: TGravity Work 开工前工作审查与任务拆解 Skill。用于员工开始一项工作前，先定义工作、判断 AI 能不能做、拆分人类和 AI 各自任务，并建议 Codex、WorkBuddy、Manus、TGravity Work Search、Video Indexer、Invoice Reimbursement 等工具分工。触发方式：/TGW-workcheck、/TGW-task、开工前检查、工作审查、工作任务拆解、这件工作 AI 能做吗、先问 AI、帮我拆工作。
 ---
 
 # TGravity Work Workcheck

@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-mcn
-description: TGravity Work MCN 资产系统主入口路由 Skill。用于用户明确要求打开 MCN 工作台、选择 MCN 子技能、查看 MCN 资产工具，或不知道该用哪个 MCN 工具时，只做意图分流，不建档、不保存、不生成索引。触发方式：/tgravity-mcn、TGravity MCN、MCN资产工具、MCN工作台、MCN子技能、我该用哪个MCN技能、帮我选择MCN工具。
+description: TGravity Work MCN 资产系统主入口路由 Skill。用于用户明确要求打开 MCN 工作台、选择 MCN 子技能、查看 MCN 资产工具，或不知道该用哪个 MCN 工具时，只做意图分流，不建档、不保存、不生成索引。触发方式：/TGW-mcn、TGravity MCN、MCN资产工具、MCN工作台、MCN子技能、我该用哪个MCN技能、帮我选择MCN工具。
 ---
 
 # TGravity Work MCN Router

@@ -1,4 +1,4 @@
 interface:
   display_name: "TGravity Work Search"
   short_description: "词元引力 Perplexity + Tavily 双引擎搜索"
-  default_prompt: "Use $tgravity-work-search only when the user explicitly says 搜索技能, /tgravity-search, /tgravity-search-init, /tgravity-search-status, or TGravity搜索."
+  default_prompt: "Use $tgravity-work-search only when the user explicitly says 搜索技能, /TGW-search, /TGW-search-init, /TGW-search-status, or TGravity搜索."

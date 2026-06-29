@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-prompt-architect
-description: TGravity Work 提示词架构 Skill。用于审核已有提示词的角色定位、工作流主干、分类分叉、判断标准、边界规则和执行路径，或根据语料、角色说明、输出样例生成可执行的智能体提示词框架；不做普通文案润色。触发方式：提示词架构、提示词审核、审核提示词、评估提示词、优化提示词架构、生成提示词框架、倒推提示词、写一个智能体提示词、/tgravity-prompt-architect。
+description: TGravity Work 提示词架构 Skill。用于审核已有提示词的角色定位、工作流主干、分类分叉、判断标准、边界规则和执行路径，或根据语料、角色说明、输出样例生成可执行的智能体提示词框架；不做普通文案润色。触发方式：提示词架构、提示词审核、审核提示词、评估提示词、优化提示词架构、生成提示词框架、倒推提示词、写一个智能体提示词、/TGW-prompt-architect。
 ---
 
 # TGravity Work Prompt Architect

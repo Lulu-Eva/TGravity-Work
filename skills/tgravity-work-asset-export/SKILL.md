@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-asset-export
-description: "TGravity Work 资产导出 Skill。用于扫描用户指定项目目录中的 Markdown 资产卡，识别 tgravity_asset true，校验必填字段，生成 INDEX.csv、MANIFEST.md、EXPORT_SUMMARY.md，并打包为可迁移、可交接、可审计的 TGravity 资产包。触发方式：/tgravity-export、导出TGravity资产、打包TGravity资产、一键导出资产卡、导出当前项目里的 TGravity 资产。"
+description: "TGravity Work 资产导出 Skill。用于扫描用户指定项目目录中的 Markdown 资产卡，识别 tgravity_asset true，校验必填字段，生成 INDEX.csv、MANIFEST.md、EXPORT_SUMMARY.md，并打包为可迁移、可交接、可审计的 TGravity 资产包。触发方式：/TGW-export、导出TGravity资产、打包TGravity资产、一键导出资产卡、导出当前项目里的 TGravity 资产。"
 ---
 
 # TGravity Work Asset Export

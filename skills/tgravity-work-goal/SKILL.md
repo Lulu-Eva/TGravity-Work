@@ -1,6 +1,6 @@
 ---
 name: tgravity-work-goal
-description: TGravity Work 目标提示词规范 Skill。用于把混乱、含糊、半成形的目标、问题或 Agent 委托改写成明确、可检查、可交给 Agent 的目标提示词；只定义目标，不拆任务、不分配工作、不生成执行方案。触发方式：目标提示词、目标规范、目标清晰化、把目标说清楚、帮我定义目标、我不知道怎么描述目标、这个目标怎么交给 AI、/tgravity-goal。
+description: TGravity Work 目标提示词规范 Skill。用于把混乱、含糊、半成形的目标、问题或 Agent 委托改写成明确、可检查、可交给 Agent 的目标提示词；只定义目标，不拆任务、不分配工作、不生成执行方案。触发方式：目标提示词、目标规范、目标清晰化、把目标说清楚、帮我定义目标、我不知道怎么描述目标、这个目标怎么交给 AI、/TGW-goal。
 ---
 
 # TGravity Work Goal

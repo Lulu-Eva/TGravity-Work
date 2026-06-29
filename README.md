@@ -54,8 +54,7 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 ## 常用触发词
 
 ```text
-/tgravity
-/tgravity-work
+/TGW
 开启新手教程
 我该怎么称呼你
 目标提示词
@@ -153,7 +152,7 @@ Codex剪视频
 MCN 资产系统采用“一个入口、多独立 Skill、共享数据契约”的设计。统一入口：
 
 ```text
-/tgravity-mcn
+/TGW-mcn
 ```
 
 也可以直接触发具体能力：
@@ -242,7 +241,7 @@ python3 -m pip install --user pillow
 检查：
 
 ```text
-/tgravity-video-check
+/TGW-video-check
 ```
 
 ## 科技画布视频 Skill 环境
@@ -273,7 +272,7 @@ output/validation_frames/
 检查：
 
 ```text
-/tgravity-tech-video-check
+/TGW-tech-video-check
 ```
 
 生产：

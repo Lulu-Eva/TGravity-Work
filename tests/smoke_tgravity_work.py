@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -99,6 +100,45 @@ def assert_router_hitl_contract() -> None:
     if missing:
         raise SystemExit(f"HITL routing contract missing: {missing}")
     print("OK router HITL contract")
+
+
+def assert_tgw_trigger_contract() -> None:
+    scanned = [
+        ROOT / "README.md",
+        ROOT / ".claude-plugin" / "marketplace.json",
+        *sorted((ROOT / "skills").glob("*/SKILL.md")),
+        *sorted((ROOT / "skills").glob("*/agents/openai.yaml")),
+        ROOT / "skills" / "tgravity-work-onboarding" / "assets" / "templates" / "onboarding-checklist.md",
+        ROOT / "skills" / "tgravity-work-profile" / "assets" / "templates" / "user-profile.md",
+        ROOT / "skills" / "tgravity-work-search" / "references" / "search-config.md",
+    ]
+    allowed_old_path_fragments = [
+        "/tgravity-work-",
+        "/tgravity-work-data",
+        "/tgravity-video-project",
+    ]
+    old_trigger_hits = []
+    for path in scanned:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for match in re.finditer(r"/tgravity[-A-Za-z0-9]*", text):
+            token = match.group(0)
+            line_start = text.rfind("\n", 0, match.start()) + 1
+            line_end = text.find("\n", match.end())
+            if line_end == -1:
+                line_end = len(text)
+            line = text[line_start:line_end]
+            if token == "/tgravity-work" and "skills/tgravity-work" in line:
+                continue
+            if any(token.startswith(fragment) for fragment in allowed_old_path_fragments):
+                continue
+            old_trigger_hits.append(f"{path.relative_to(ROOT)}:{token}")
+    if old_trigger_hits:
+        raise SystemExit(f"old slash triggers still visible: {old_trigger_hits}")
+    if "/TGW" not in ROUTER_SKILL.read_text(encoding="utf-8"):
+        raise SystemExit("router missing /TGW trigger")
+    print("OK TGW trigger contract")
 
 
 def assert_prompt_architect_contract() -> None:
@@ -690,6 +730,7 @@ def main() -> int:
 
     assert_goal_skill_contract()
     assert_router_hitl_contract()
+    assert_tgw_trigger_contract()
     assert_prompt_optimizer_contract()
     assert_prompt_architect_contract()
     assert_asset_card_fixture_validation()
