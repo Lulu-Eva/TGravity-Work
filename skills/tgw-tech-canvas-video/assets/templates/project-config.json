@@ -1,0 +1,26 @@
+{
+  "project_type": "tgw-tech-canvas-video",
+  "version": 2,
+  "input": {
+    "video": "input/source.mp4",
+    "script": "input/script.md",
+    "style": "input/style.md",
+    "assets_dir": "input/assets"
+  },
+  "output_ratio": "9:16",
+  "default_style": "cyber-blueprint",
+  "render": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 24,
+    "background_mp4": "output/background.mp4",
+    "render_report": "output/render_report.json",
+    "validation_report": "output/validation_report.json",
+    "production_manifest": "output/production_manifest.json"
+  },
+  "portrait_safe_zone": {
+    "default_position": "right-bottom",
+    "composited_by_default": false
+  },
+  "allow_cloud_asr": false
+}

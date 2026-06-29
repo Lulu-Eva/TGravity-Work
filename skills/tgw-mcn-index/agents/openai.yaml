@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW MCN Index"
+  short_description: "MCN关系索引、互链回填和校验"
+  default_prompt: "Use $tgw-mcn-index to rebuild MCN relationship indexes, validate links, and fill Markdown backlinks."

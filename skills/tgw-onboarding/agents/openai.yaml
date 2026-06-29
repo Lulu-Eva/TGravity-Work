@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Onboarding"
+  short_description: "新员工小白入门、动态教学和操作带练"
+  default_prompt: "Use $tgw-onboarding when the user asks to 开启新手教程, 带我学 TGW, TGW 入职培训, 操作手册, 继续下一课, or 新员工怎么用."

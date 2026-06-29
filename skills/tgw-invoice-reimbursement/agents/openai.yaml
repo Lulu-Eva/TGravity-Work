@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Invoice Reimbursement"
+  short_description: "文本型 PDF 发票报销整理与复查"
+  default_prompt: "Use $tgw-invoice-reimbursement when the user asks to 整理发票, 发票报销, 文本型 PDF 发票识别, 高铁票报销, 差旅发票, or 按模板填写发票."

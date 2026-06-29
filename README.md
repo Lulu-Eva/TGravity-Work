@@ -1,8 +1,10 @@
-# TGravity Work Skills
+# TGW Skills
 
-TGravity Work Skills 是词元引力内部工作协作 Skill 包。
+TGW 是 TGravity Work 的简称。这个包保留 TGravity Work 的品牌含义，但 Skill 名称、主入口、子入口和日常触发词统一使用更短的 TGW，避免 Agent 继续识别成长名字。
 
-当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgravity-work` 只负责判断用户该用哪个子 Skill，不做目标规范、提示词优化、提示词架构、日报、资产卡、MCN 资产、搜索、视频、科技画布、发票、项目审视或文件夹整理。
+TGW Skills 是词元引力内部工作协作 Skill 包。
+
+当前结构采用“主入口只路由、子 Skill 独立工作”的设计：`tgw` 只负责判断用户该用哪个子 Skill，不做目标规范、提示词优化、提示词架构、日报、资产卡、MCN 资产、搜索、视频、科技画布、发票、项目审视或文件夹整理。
 
 当前阶段：`0.1 beta`
 
@@ -19,37 +21,39 @@ npx skills add Lulu-Eva/TGravity-Work -g -y
 只安装单个 Skill：
 
 ```bash
-npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
+npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgw-search
 ```
 
 安装后重启对应 Agent 应用。
+
+本包的 Skill 名称统一为 `tgw` 和 `tgw-*`。如果本机曾经安装过旧版长名目录，必须删除旧目录后再安装，否则 Agent 仍可能优先识别旧长名。
 
 ## 包含的 Skill
 
 | Skill | 用途 |
 |---|---|
-| `tgravity-work` | 主入口，只路由，不做具体任务 |
-| `tgravity-work-onboarding` | 新员工小白入门、动态教学、操作手册 |
-| `tgravity-work-profile` | 本机使用者称呼、日报提交人、默认决策对象 |
-| `tgravity-work-goal` | 混乱目标、问题或 AI 委托改写成 Agent 可用目标提示词 |
-| `tgravity-work-prompt-optimizer` | 精简完整提示词，压缩冗余规则、重复表达和防御性指令 |
-| `tgravity-work-prompt-architect` | 审核提示词架构，或从语料生成可执行智能体提示词框架 |
-| `tgravity-work-workcheck` | 开工前工作审查、任务定义、人机分工 |
-| `tgravity-work-daily-report` | 口喷、语音转文字、流水账整理成 Markdown 日报 |
-| `tgravity-work-asset-cards` | 达人卡、品牌卡、商单卡、复盘卡、决策请求卡 |
-| `tgravity-work-mcn` | MCN 资产系统主入口，只路由达人、品牌、Brief、合作记录和索引 |
-| `tgravity-work-mcn-creator-profile` | MCN 达人档案采集、补全、内部/对外字段隔离 |
-| `tgravity-work-mcn-brand-profile` | MCN 品牌档案采集、预算线索、投放偏好和风险记录 |
-| `tgravity-work-mcn-brief-builder` | 品牌模糊需求整理成逆向 Brief 和达人匹配草稿 |
-| `tgravity-work-mcn-collaboration` | 品牌-达人合作记录事实表，支撑互链和合作历史查询 |
-| `tgravity-work-mcn-index` | 重建 MCN 关系索引、品牌-达人矩阵、达人合作历史和 Markdown 双链 |
-| `tgravity-work-asset-export` | 扫描 `tgravity_asset: true` 并打包导出资产 |
-| `tgravity-work-preflight-review` | 大项目行动前审视，60/80/120 和 11 问闸门 |
-| `tgravity-work-search` | Perplexity + Tavily 双引擎公开网页搜索 |
-| `tgravity-work-video-indexer` | 视频素材索引、逐字稿对齐、contact sheet、切片表 |
-| `tgravity-work-tech-canvas-video` | 已剪好气口的人像视频 + 逐字稿 -> 本地 HTML 科技画布 -> 可验收背景动画 MP4 |
-| `tgravity-work-invoice-reimbursement` | 文本型 PDF 发票报销整理、去重和复查 |
-| `tgravity-work-project-folder-organizer` | 项目文件夹审计、目录整理提案、极简 AGENTS/CLAUDE/SOURCE_OF_TRUTH 生成 |
+| `tgw` | 主入口，只路由，不做具体任务 |
+| `tgw-onboarding` | 新员工小白入门、动态教学、操作手册 |
+| `tgw-profile` | 本机使用者称呼、日报提交人、默认决策对象 |
+| `tgw-goal` | 混乱目标、问题或 AI 委托改写成 Agent 可用目标提示词 |
+| `tgw-prompt-optimizer` | 精简完整提示词，压缩冗余规则、重复表达和防御性指令 |
+| `tgw-prompt-architect` | 审核提示词架构，或从语料生成可执行智能体提示词框架 |
+| `tgw-workcheck` | 开工前工作审查、任务定义、人机分工 |
+| `tgw-daily-report` | 口喷、语音转文字、流水账整理成 Markdown 日报 |
+| `tgw-asset-cards` | 达人卡、品牌卡、商单卡、复盘卡、决策请求卡 |
+| `tgw-mcn` | MCN 资产系统主入口，只路由达人、品牌、Brief、合作记录和索引 |
+| `tgw-mcn-creator-profile` | MCN 达人档案采集、补全、内部/对外字段隔离 |
+| `tgw-mcn-brand-profile` | MCN 品牌档案采集、预算线索、投放偏好和风险记录 |
+| `tgw-mcn-brief-builder` | 品牌模糊需求整理成逆向 Brief 和达人匹配草稿 |
+| `tgw-mcn-collaboration` | 品牌-达人合作记录事实表，支撑互链和合作历史查询 |
+| `tgw-mcn-index` | 重建 MCN 关系索引、品牌-达人矩阵、达人合作历史和 Markdown 双链 |
+| `tgw-asset-export` | 扫描 `tgw_asset: true` 并打包导出资产 |
+| `tgw-preflight-review` | 大项目行动前审视，60/80/120 和 11 问闸门 |
+| `tgw-search` | Perplexity + Tavily 双引擎公开网页搜索 |
+| `tgw-video-indexer` | 视频素材索引、逐字稿对齐、contact sheet、切片表 |
+| `tgw-tech-canvas-video` | 已剪好气口的人像视频 + 逐字稿 -> 本地 HTML 科技画布 -> 可验收背景动画 MP4 |
+| `tgw-invoice-reimbursement` | 文本型 PDF 发票报销整理、去重和复查 |
+| `tgw-project-folder-organizer` | 项目文件夹审计、目录整理提案、极简 AGENTS/CLAUDE/SOURCE_OF_TRUTH 生成 |
 
 ## 常用触发词
 
@@ -68,7 +72,7 @@ npx skills add Lulu-Eva/TGravity-Work -g -y --skill tgravity-work-search
 倒推提示词
 开工前检查
 工作任务拆解
-TGravity日报
+TGW日报
 生成今天日报
 品牌线索
 达人卡
@@ -81,7 +85,7 @@ MCN资产
 合作记录
 品牌达人互链
 MCN关系索引
-导出TGravity资产
+导出TGW资产
 大项目行动前审视
 搜索技能
 视频分析技能
@@ -100,7 +104,7 @@ Codex剪视频
 开启新手教程
 ```
 
-新手教程会先识别当前安装的 TGravity 子 Skill，再按员工需求一步一步带练。它不是固定讲稿。
+新手教程会先识别当前安装的 TGW 子 Skill，再按员工需求一步一步带练。它不是固定讲稿。
 
 ## 目标提示词规范
 
@@ -110,7 +114,7 @@ Codex剪视频
 目标提示词：{把你脑子里的原话丢进来}
 ```
 
-这个 Skill 只把目标、问题或 AI 委托规范成可检查、可交给 Agent 的目标提示词，不拆任务、不分配工作、不生成执行方案。目标清楚后，才交给 `tgravity-work-workcheck` 做任务审查。
+这个 Skill 只把目标、问题或 AI 委托规范成可检查、可交给 Agent 的目标提示词，不拆任务、不分配工作、不生成执行方案。目标清楚后，才交给 `tgw-workcheck` 做任务审查。
 
 ## 提示词功能
 
@@ -118,8 +122,8 @@ Codex剪视频
 
 | 功能 | Skill | 适用场景 |
 |---|---|---|
-| 优化算法 | `tgravity-work-prompt-optimizer` | 已经有一份完整提示词，要在不改变原意的前提下压缩、删减、重排 |
-| 架构师 | `tgravity-work-prompt-architect` | 要审核提示词结构，或从语料、角色说明、输出样例生成提示词框架 |
+| 优化算法 | `tgw-prompt-optimizer` | 已经有一份完整提示词，要在不改变原意的前提下压缩、删减、重排 |
+| 架构师 | `tgw-prompt-architect` | 要审核提示词结构，或从语料、角色说明、输出样例生成提示词框架 |
 
 优化已有提示词时，使用：
 
@@ -179,7 +183,7 @@ MCN关系索引：重建品牌达人互链
 默认运行数据目录：
 
 ```text
-tgravity-work-data/mcn/
+tgw-data/mcn/
 ├── creators/
 ├── brands/
 ├── briefs/
@@ -191,17 +195,17 @@ tgravity-work-data/mcn/
 重建索引：
 
 ```bash
-python3 skills/tgravity-work-mcn-index/scripts/mcn_index.py --root "<项目根目录>"
+python3 skills/tgw-mcn-index/scripts/mcn_index.py --root "<项目根目录>"
 ```
 
 填充 Markdown 双链：
 
 ```bash
-python3 skills/tgravity-work-mcn-index/scripts/mcn_index.py --root "<项目根目录>" --fill-links --dry-run
-python3 skills/tgravity-work-mcn-index/scripts/mcn_index.py --root "<项目根目录>" --fill-links
+python3 skills/tgw-mcn-index/scripts/mcn_index.py --root "<项目根目录>" --fill-links --dry-run
+python3 skills/tgw-mcn-index/scripts/mcn_index.py --root "<项目根目录>" --fill-links
 ```
 
-先跑 `--dry-run` 看会改多少源 Markdown。正式 `--fill-links` 会在写入前把被改文件备份到 `tgravity-work-data/mcn/.backups/fill-links-*`；不要在没有 Git 或备份的项目里使用 `--no-backup`。
+先跑 `--dry-run` 看会改多少源 Markdown。正式 `--fill-links` 会在写入前把被改文件备份到 `tgw-data/mcn/.backups/fill-links-*`；不要在没有 Git 或备份的项目里使用 `--no-backup`。
 
 ## 搜索 Skill 初始化
 
@@ -223,7 +227,7 @@ Tavily API Key
 API Key 只保存到本机：
 
 ```text
-~/.config/tgravity-work-search/config.json
+~/.config/tgw-search/config.json
 ```
 
 公开 GitHub 仓库不保存 API Key。
@@ -278,7 +282,7 @@ output/validation_frames/
 生产：
 
 ```bash
-python3 skills/tgravity-work-tech-canvas-video/scripts/tech_canvas_pipeline.py produce --workspace "<项目根目录>" --style cyber-blueprint
+python3 skills/tgw-tech-canvas-video/scripts/tech_canvas_pipeline.py produce --workspace "<项目根目录>" --style cyber-blueprint
 ```
 
 ## 发票 Skill 环境
@@ -318,10 +322,10 @@ python3 -m pip install --user openpyxl pdfminer.six
 以下内容必须留在本机，不提交 GitHub：
 
 ```text
-tgravity-work-data/
-tgravity-work-data/mcn/
-tgravity-work-exports/
-tgravity-work-search-data/
+tgw-data/
+tgw-data/mcn/
+tgw-exports/
+tgw-search-data/
 视频素材工作区/
 发票下载/
 发票填写*.xlsx
@@ -331,16 +335,16 @@ tgravity-work-search-data/
 ## 开发校验
 
 ```bash
-for skill in skills/tgravity-work skills/tgravity-work-onboarding skills/tgravity-work-profile skills/tgravity-work-goal skills/tgravity-work-prompt-optimizer skills/tgravity-work-prompt-architect skills/tgravity-work-workcheck skills/tgravity-work-daily-report skills/tgravity-work-asset-cards skills/tgravity-work-mcn skills/tgravity-work-mcn-creator-profile skills/tgravity-work-mcn-brand-profile skills/tgravity-work-mcn-brief-builder skills/tgravity-work-mcn-collaboration skills/tgravity-work-mcn-index skills/tgravity-work-asset-export skills/tgravity-work-preflight-review skills/tgravity-work-search skills/tgravity-work-video-indexer skills/tgravity-work-tech-canvas-video skills/tgravity-work-invoice-reimbursement skills/tgravity-work-project-folder-organizer; do
+for skill in skills/tgw skills/tgw-onboarding skills/tgw-profile skills/tgw-goal skills/tgw-prompt-optimizer skills/tgw-prompt-architect skills/tgw-workcheck skills/tgw-daily-report skills/tgw-asset-cards skills/tgw-mcn skills/tgw-mcn-creator-profile skills/tgw-mcn-brand-profile skills/tgw-mcn-brief-builder skills/tgw-mcn-collaboration skills/tgw-mcn-index skills/tgw-asset-export skills/tgw-preflight-review skills/tgw-search skills/tgw-video-indexer skills/tgw-tech-canvas-video skills/tgw-invoice-reimbursement skills/tgw-project-folder-organizer; do
   python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py "$skill"
 done
 
-python3 skills/tgravity-work-asset-export/scripts/validate_asset_cards.py --source tests/fixtures/asset-cards
-python3 skills/tgravity-work-search/scripts/dual_search.py --status
-python3 skills/tgravity-work-video-indexer/scripts/video_pipeline.py check --json
-python3 skills/tgravity-work-tech-canvas-video/scripts/tech_canvas_pipeline.py check --json
-python3 skills/tgravity-work-invoice-reimbursement/scripts/invoice_reimbursement.py check
-python3 tests/smoke_tgravity_work.py --quick
+python3 skills/tgw-asset-export/scripts/validate_asset_cards.py --source tests/fixtures/asset-cards
+python3 skills/tgw-search/scripts/dual_search.py --status
+python3 skills/tgw-video-indexer/scripts/video_pipeline.py check --json
+python3 skills/tgw-tech-canvas-video/scripts/tech_canvas_pipeline.py check --json
+python3 skills/tgw-invoice-reimbursement/scripts/invoice_reimbursement.py check
+python3 tests/smoke_tgw.py --quick
 ```
 
 科技画布生产链路需要 `input/source.mp4` 和 `input/script.md` / `input/script.srt` / `input/script.vtt`，然后运行 `produce -> validate`；无脚本时可在用户允许后加 `--transcribe-if-missing`。

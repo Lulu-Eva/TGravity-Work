@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW MCN Brand Profile"
+  short_description: "MCN品牌档案采集、补全和合作引用"
+  default_prompt: "Use $tgw-mcn-brand-profile to create or update a structured MCN brand profile from messy notes."

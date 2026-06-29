@@ -1,4 +1,0 @@
-interface:
-  display_name: "TGravity Work Asset Export"
-  short_description: "TGravity 资产卡校验、打包和交接导出"
-  default_prompt: "Use $tgravity-work-asset-export when the user asks 导出 TGravity 资产, 打包 TGravity 资产, 一键导出资产卡, or 导出当前项目里的 TGravity 资产."

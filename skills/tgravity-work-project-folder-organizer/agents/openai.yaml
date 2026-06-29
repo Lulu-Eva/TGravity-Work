@@ -1,4 +1,0 @@
-interface:
-  display_name: "TGravity Work Project Folder Organizer"
-  short_description: "项目文件夹审计、目录整理提案和极简 Agent 规则生成"
-  default_prompt: "Use $tgravity-work-project-folder-organizer when the user asks to organize a project folder, generate AGENTS.md, CLAUDE.md, SOURCE_OF_TRUTH.md, or create a lightweight project folder operating guide."

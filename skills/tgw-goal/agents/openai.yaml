@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Goal"
+  short_description: "把混乱目标问题委托改写成 Agent 可用目标提示词"
+  default_prompt: "Use $tgw-goal when the user says 目标提示词, 目标规范, 目标清晰化, 帮我定义目标, 把目标说清楚, 我不知道怎么描述目标, 这个问题怎么交给 AI, or wants a vague goal/problem/delegation rewritten into a precise Agent-ready target prompt without task allocation."

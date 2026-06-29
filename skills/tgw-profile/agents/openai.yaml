@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Profile"
+  short_description: "本机使用者称呼、提交人和决策对象配置"
+  default_prompt: "Use $tgw-profile when the user asks 我该怎么称呼你, 设置称呼, 更新称呼, 使用者信息卡, 员工信息卡, 保存称呼, or 以后叫我."

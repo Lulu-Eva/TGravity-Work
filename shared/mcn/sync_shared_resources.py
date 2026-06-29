@@ -9,18 +9,18 @@ from pathlib import Path
 
 
 CONTRACT_SKILLS = (
-    "tgravity-work-mcn-creator-profile",
-    "tgravity-work-mcn-brand-profile",
-    "tgravity-work-mcn-brief-builder",
-    "tgravity-work-mcn-collaboration",
-    "tgravity-work-mcn-index",
+    "tgw-mcn-creator-profile",
+    "tgw-mcn-brand-profile",
+    "tgw-mcn-brief-builder",
+    "tgw-mcn-collaboration",
+    "tgw-mcn-index",
 )
 
 RENDER_SKILLS = (
-    "tgravity-work-mcn-creator-profile",
-    "tgravity-work-mcn-brand-profile",
-    "tgravity-work-mcn-brief-builder",
-    "tgravity-work-mcn-collaboration",
+    "tgw-mcn-creator-profile",
+    "tgw-mcn-brand-profile",
+    "tgw-mcn-brief-builder",
+    "tgw-mcn-collaboration",
 )
 
 

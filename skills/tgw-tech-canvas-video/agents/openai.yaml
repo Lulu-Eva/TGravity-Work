@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Tech Canvas Video"
+  short_description: "可交付科技画布背景动画 MP4 生产器"
+  default_prompt: "Use $tgw-tech-canvas-video when the user wants 科技画布, Codex剪视频, 脚本驱动剪辑, 本地HTML科技画布, HyperFrames背景动画, 背景动画MP4, or a validated MP4 background layer for later compositing in 剪映."

@@ -1,5 +1,5 @@
 ---
-tgravity_asset: true
+tgw_asset: true
 asset_id: creator_test_001
 asset_type: creator_card
 title: 测试达人画像卡

@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Asset Cards"
+  short_description: "达人、品牌、商单和决策资产卡生成更新"
+  default_prompt: "Use $tgw-asset-cards when the user asks to generate, update, inspect, or save creator, brand, deal, review, asset, or decision-request cards."

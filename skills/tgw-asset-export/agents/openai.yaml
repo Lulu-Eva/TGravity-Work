@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Asset Export"
+  short_description: "TGW 资产卡校验、打包和交接导出"
+  default_prompt: "Use $tgw-asset-export when the user asks 导出 TGW 资产, 打包 TGW 资产, 一键导出资产卡, or 导出当前项目里的 TGW 资产."

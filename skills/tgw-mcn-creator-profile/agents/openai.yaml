@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW MCN Creator Profile"
+  short_description: "MCN达人档案采集、补全和互链引用"
+  default_prompt: "Use $tgw-mcn-creator-profile to create or update a structured MCN creator profile from messy notes."

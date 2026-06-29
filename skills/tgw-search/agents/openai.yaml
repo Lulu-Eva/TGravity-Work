@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Search"
+  short_description: "词元引力 Perplexity + Tavily 双引擎搜索"
+  default_prompt: "Use $tgw-search only when the user explicitly says 搜索技能, /TGW-search, /TGW-search-init, /TGW-search-status, or TGW搜索."

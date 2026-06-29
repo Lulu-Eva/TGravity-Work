@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW Prompt Optimizer"
+  short_description: "精简完整提示词，压缩冗余规则和表达"
+  default_prompt: "Use $tgw-prompt-optimizer to simplify and compress an executable prompt without changing its intent."

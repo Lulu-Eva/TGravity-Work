@@ -1,4 +1,0 @@
-interface:
-  display_name: "TGravity Work Daily Report"
-  short_description: "员工口喷工作日报整理成 Markdown"
-  default_prompt: "Use $tgravity-work-daily-report when the user asks TGravity 日报, 工作日报, 生成今天日报, 保存今天日报, 今天我口喷一下, or 把这段整理成日报."

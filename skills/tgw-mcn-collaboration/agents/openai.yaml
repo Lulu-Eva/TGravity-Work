@@ -1,0 +1,4 @@
+interface:
+  display_name: "TGW MCN Collaboration"
+  short_description: "MCN合作记录事实表和互链来源"
+  default_prompt: "Use $tgw-mcn-collaboration to record a factual MCN collaboration between a creator, brand, and brief."

@@ -1,23 +1,23 @@
 {
-  "name": "tgravity-work",
+  "name": "tgw",
   "owner": {
     "name": "Lulu-Eva"
   },
   "metadata": {
-    "description": "TGravity Work Skills 0.1 beta：词元引力内部工作协作工具包。主入口只做路由，能力拆分为新手教程、称呼配置、目标提示词规范、提示词优化、提示词架构、开工审查、日报、资产卡、MCN 资产、资产导出、大项目审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票整理和项目文件夹整理等独立 Skill。",
+    "description": "TGW Skills 0.1 beta：词元引力内部工作协作工具包。主入口只做路由，能力拆分为新手教程、称呼配置、目标提示词规范、提示词优化、提示词架构、开工审查、日报、资产卡、MCN 资产、资产导出、大项目审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票整理和项目文件夹整理等独立 Skill。",
     "version": "0.1.0"
   },
   "plugins": [
     {
-      "name": "TGravity Work Skills",
-      "description": "TGravity Work Skills 0.1 beta：主入口只路由，子 Skill 独立处理新手教程、目标提示词规范、提示词优化、提示词架构、开工审查、日报、资产卡、MCN 资产、导出、大项目行动前审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票报销整理和项目文件夹整理。",
+      "name": "TGW Skills",
+      "description": "TGW Skills 0.1 beta：主入口只路由，子 Skill 独立处理新手教程、目标提示词规范、提示词优化、提示词架构、开工审查、日报、资产卡、MCN 资产、导出、大项目行动前审视、搜索、视频素材索引、科技画布背景动画 MP4 生产、发票报销整理和项目文件夹整理。",
       "source": "./",
       "strict": false,
       "version": "0.1.0",
       "category": "business-operations",
       "keywords": [
         "tokengravity",
-        "tgravity",
+        "tgw",
         "router",
         "onboarding",
         "profile",
@@ -87,28 +87,28 @@
         "chinese"
       ],
       "skills": [
-        "./skills/tgravity-work",
-        "./skills/tgravity-work-onboarding",
-        "./skills/tgravity-work-profile",
-        "./skills/tgravity-work-goal",
-        "./skills/tgravity-work-prompt-optimizer",
-        "./skills/tgravity-work-prompt-architect",
-        "./skills/tgravity-work-workcheck",
-        "./skills/tgravity-work-daily-report",
-        "./skills/tgravity-work-asset-cards",
-        "./skills/tgravity-work-mcn",
-        "./skills/tgravity-work-mcn-creator-profile",
-        "./skills/tgravity-work-mcn-brand-profile",
-        "./skills/tgravity-work-mcn-brief-builder",
-        "./skills/tgravity-work-mcn-collaboration",
-        "./skills/tgravity-work-mcn-index",
-        "./skills/tgravity-work-asset-export",
-        "./skills/tgravity-work-preflight-review",
-        "./skills/tgravity-work-search",
-        "./skills/tgravity-work-video-indexer",
-        "./skills/tgravity-work-tech-canvas-video",
-        "./skills/tgravity-work-invoice-reimbursement",
-        "./skills/tgravity-work-project-folder-organizer"
+        "./skills/tgw",
+        "./skills/tgw-onboarding",
+        "./skills/tgw-profile",
+        "./skills/tgw-goal",
+        "./skills/tgw-prompt-optimizer",
+        "./skills/tgw-prompt-architect",
+        "./skills/tgw-workcheck",
+        "./skills/tgw-daily-report",
+        "./skills/tgw-asset-cards",
+        "./skills/tgw-mcn",
+        "./skills/tgw-mcn-creator-profile",
+        "./skills/tgw-mcn-brand-profile",
+        "./skills/tgw-mcn-brief-builder",
+        "./skills/tgw-mcn-collaboration",
+        "./skills/tgw-mcn-index",
+        "./skills/tgw-asset-export",
+        "./skills/tgw-preflight-review",
+        "./skills/tgw-search",
+        "./skills/tgw-video-indexer",
+        "./skills/tgw-tech-canvas-video",
+        "./skills/tgw-invoice-reimbursement",
+        "./skills/tgw-project-folder-organizer"
       ]
     }
   ]
